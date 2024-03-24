@@ -17,6 +17,11 @@ spring:
           use_jdbc_metadata_defaults: false
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yaml
-bot:
-  name: Prozvetanie_Flower_Shop_bot
-  token: 7091988555:AAHmFSmxmJKkyk8JB9cRAMfd0Z0YlIXo-uk
+telegram:
+  bot:
+    name: Prozvetanie_Flower_Shop_bot
+    token: 7091988555:AAHmFSmxmJKkyk8JB9cRAMfd0Z0YlIXo-uk
+  webhook-path: localhost:8080
+server:
+  port:
+    8000

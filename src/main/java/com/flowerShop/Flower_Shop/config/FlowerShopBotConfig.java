@@ -10,9 +10,9 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("application.yaml")
 public class FlowerShopBotConfig {
 
-    @Value("${bot.name}")
+    @Value("${telegram.bot.name}")
     String nameOfBot;
 
-    @Value("${bot.token}")
+    @Value("${telegram.bot.token}")
     String tokenToAccess;
 }
