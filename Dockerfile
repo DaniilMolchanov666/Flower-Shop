@@ -19,3 +19,5 @@ WORKDIR ./
 COPY ./ .
 
 RUN gradle bootRun
+
+CMD

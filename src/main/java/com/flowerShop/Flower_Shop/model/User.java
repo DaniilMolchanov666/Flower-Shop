@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
-import javax.management.ConstructorParameters;
 import java.util.List;
 
 @AllArgsConstructor
@@ -21,7 +20,7 @@ public class User {
 
     private Update update;
 
-    private List<Product> listOfRequests;
+    private List<Flower> listOfRequests;
 
     public User(long chatId, Update update) {
         this.chatId = chatId;

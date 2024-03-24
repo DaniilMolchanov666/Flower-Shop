@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<div class="p-3 mb-2 bg-dark text-white">
+    <head>
+        <meta charset="UTF-8">
+        <title>База данных магазина "Процветание" </title>
+        <link rel="stylesheet"
+              href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+              crossorigin="anonymous">
+    </head>
+    <h1>Редактирование товара</h1>
+</div>
+<body>
+<form action="#" th:action="@{/api/products/update/{name}" th:object="${product}" method="post">
+    <input type="text" name="Название товара" th:text="*{name}" />
+    <input type="text" name="Категория товара" th:text="*{category}">
+    <input type="text" name="Описание товара" th:text="*{description}">
+    <input type="number" name="Цна товара" th:text="*{price}">
+    <input type="number" name="Закупочная цена товара" th:text="*{purchasePrice}">
+    <button type="submit">Edit product</button>
+</form>
+</body>
+</html>

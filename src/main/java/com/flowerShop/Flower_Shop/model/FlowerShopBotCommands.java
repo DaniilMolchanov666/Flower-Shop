@@ -14,13 +14,9 @@ public class FlowerShopBotCommands {
             + "/choose позволяют оформить ваш заказ\n"
             +"/request позволят отправить ваш заказ на обработку");
 
-    public static final Map.Entry<String, String> REQUEST = Map.entry("/request",
-            "позволят отправить ваш заказ на обработку");
 
     public static final Map.Entry<String, String> START = Map.entry("/start",
             "позволяет ознакомиться со всеми доступными на данный момент заказами");
 
-    public static final Map.Entry<String, String> CHOOSE = Map.entry("/choose",
-            "позволяют оформить ваш заказ");
 
 }

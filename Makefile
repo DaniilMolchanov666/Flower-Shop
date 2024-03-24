@@ -4,7 +4,7 @@ clean:
 	make -C app clean
 
 build:
-	make -C app build
+	make -C build
 
 test:
 	make -C app test

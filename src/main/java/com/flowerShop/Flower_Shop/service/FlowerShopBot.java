@@ -1,9 +1,9 @@
 package com.flowerShop.Flower_Shop.service;
 
+import com.flowerShop.Flower_Shop.FlowerShopApplication;
 import com.flowerShop.Flower_Shop.config.FlowerShopBotConfig;
-import com.flowerShop.Flower_Shop.controller.UpdateController;
 import com.flowerShop.Flower_Shop.model.FlowerShopBotCommands;
-import com.flowerShop.Flower_Shop.model.Product;
+import com.flowerShop.Flower_Shop.model.Flower;
 import com.flowerShop.Flower_Shop.model.User;
 import com.flowerShop.Flower_Shop.sender.PhotoForSend;
 import com.vdurmont.emoji.EmojiParser;
@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.name.Rename;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
@@ -29,12 +31,12 @@ import java.util.*;
 import java.util.List;
 
 @Slf4j
-@Component
+@SpringBootApplication
 public class FlowerShopBot extends TelegramLongPollingBot {
 
     FlowerShopBotConfig flowerShopBotConfig;
 
-    List<Product> listOfProducts = new ArrayList<>();
+    List<Flower> listOfProducts = new ArrayList<>();
 
     List<User> listOfUsers = new ArrayList<>();
 
@@ -52,13 +54,13 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         listOfCommand.add(new BotCommand(FlowerShopBotCommands.START.getKey(),
                 FlowerShopBotCommands.START.getValue()));
 
-        listOfProducts.add(new Product("Букет 1",
+        listOfProducts.add(new Flower("Букет 1",
                new InputFile(new File("src/main/resources/flowers/Букет 1.jpeg")), 3500));
-        listOfProducts.add(new Product("Букет 2",
+        listOfProducts.add(new Flower("Букет 2",
                 new InputFile(new File("src/main/resources/flowers/Букет 2.jpg")), 4890));
-        listOfProducts.add(new Product("Букет 3",
+        listOfProducts.add(new Flower("Букет 3",
                 new InputFile(new File("src/main/resources/flowers/Букет 3.jpeg")), 2300));
-        listOfProducts.add(new Product("Букет 4",
+        listOfProducts.add(new Flower("Букет 4",
                 new InputFile(new File("src/main/resources/flowers/Букет 4.jpeg")), 3600));
 
         try {
@@ -126,11 +128,11 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     long finalChatId = chatId;
                     User user = listOfUsers.stream().filter(u -> u.getChatId() == finalChatId).findAny().get();
                     if (user.getListOfRequests() == null) {
-                        List<Product> list = new ArrayList<>();
+                        List<Flower> list = new ArrayList<>();
                         list.add(photoSender.getProduct());
                         user.setListOfRequests(list);
                     } else {
-                        List<Product> newList = user.getListOfRequests();
+                        List<Flower> newList = user.getListOfRequests();
                         newList.add(photoSender.getProduct());
                         user.setListOfRequests(newList);
                     }
@@ -144,7 +146,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     });
 
                     long countPrice = user.getListOfRequests().stream()
-                            .mapToInt(Product::getPrice)
+                            .mapToInt(Flower::getPrice)
                             .sum();
 
                     sendMessage.setText("Заказ добавлен в корзину!\n" + stringBuilder
@@ -351,4 +353,5 @@ public class FlowerShopBot extends TelegramLongPollingBot {
     public String getBotToken() {
         return flowerShopBotConfig.getTokenToAccess();
     }
+
 }

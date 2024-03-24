@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
-@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })
+@SpringBootApplication
 public class FlowerShopApplication {
 
 	public static void main(String[] args) throws TelegramApiException {

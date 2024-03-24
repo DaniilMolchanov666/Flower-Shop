@@ -1,0 +1,41 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 5
+      author: cottonpads
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: flower_shop_products
+      changes:
+        - createTable:
+            tableName: flower_shop_products
+            remarks: Цветы и аксессуары
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: category_of_product
+                  type: text
+                  remarks: Название категории товара
+              - column:
+                  name: name
+                  type: varchar(50)
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: price
+                  type: integer
+              - column:
+                  name: purchase_price
+                  type: integer
+                  remarks: Закупочная цена
+
+

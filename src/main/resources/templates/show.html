@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<div class="p-3 mb-2 bg-dark text-white">
+<head>
+    <meta charset="UTF-8">
+    <title>База данных магазина "Процветание" </title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<h1> База данных магазина "Процветание" </h1>
+<form action="/api/products/create" method="get">
+    <div>
+        <label>
+            <button type="submit" class="btn btn-primary">Добавить новый товар</button>
+        </label>
+    </div>
+</form>
+</div>
+<table class="table table-ligth table-striped-columns">
+    <thead>
+    <tr>
+        <th scope="col">Название:</th>
+        <th scope="col">Категория:</th>
+        <th scope="col">Описание:</th>
+        <th scope="col">Цена:</th>
+        <th scope="col">Закупочная цена:</th>
+        <th scope="col"> Изображение:</th>
+    </tr>
+    </thead>
+<tbody th:each="product: ${list}">
+    <tr>
+        <td>
+            <p1 th:text="${product.getName()}"></p1>
+            <br>
+            <a class="btn btn-success" href="/api/products/update/${product.getName()}" role="button">Редактировать</a>
+            <a class="btn btn-danger" href="/api/products/d elete/${product.getName()}" role="button">Удалить</a>
+            </br>
+        </td>
+        <td th:text="${product.getCategory()}"/>
+        <td th:text="${product.getDescription()}"/>
+        <td th:text="${product.getPrice()}"/>
+        <td th:text="${product.getPurchasePrice()}"/>
+        <td>
+            <img th:src="@{Букет 1.jpeg}">
+        </td>
+    </tr>
+</tbody>
+</table>
+</html>

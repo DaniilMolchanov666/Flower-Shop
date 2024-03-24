@@ -7,7 +7,7 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @Data
-@PropertySource("application.properties")
+@PropertySource("application.yaml")
 public class FlowerShopBotConfig {
 
     @Value("${bot.name}")
