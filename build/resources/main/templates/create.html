@@ -9,44 +9,33 @@
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
               crossorigin="anonymous">
     </head>
-<h1>Создание нового товара</h1>
+    <h1> База данных магазина "Процветание" </h1>
 </div>
 <body>
-<div class="mb-3">
-    <label for="exampleFormControlInput1" class="form-label">Название товара</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" required placeholder="Название товара">
-</div>
-<div class="mb-3">
-    <label class="form-label">Категория</label>
-    <input type="text" class="form-control" required placeholder="Категория товара">
-</div>
-<div class="mb-3">
-    <label class="form-label">Описание</label>
-    <input type="text" class="form-control" placeholder="Описание товара">
-</div>
-<div class="mb-3">
-    <label class="form-label">Цена</label>
-    <input type="text" class="form-control" required placeholder="Цена товара">
-</div>
-<div class="mb-3">
-    <label class="form-label">Закупочная цена</label>
-    <input type="text" class="form-control" placeholder="Закупочная цена товара">
+<div class="container mt-5 mb-3">
+    <header>
+        <h1>Создание нового товара</h1>
+    </header>
+    <form action ="/api/products/create" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" required placeholder="Название товара" class="form-control"><br>
+            <label for="categories">Категория товара:</label>
+                <select name="category" id="categories">
+                    <option value="Цветы">Цветы</option>
+                    <option value="Монобукет">Монобукет</option>
+                    <option value="Составной букет">Составной букет</option>
+                    <option value="Другое">Другое</option>
+                </select>
+        <input type="text" name="description" placeholder="Описание или комментарий к товару" class="form-control"><br>
+        <input type="text" name="price" required placeholder="Цена товара" class="form-control"><br>
+        <input type="text" name="purchase_price" placeholder="Закупочная цена товара" class="form-control"><br>
+        <input class="form-control" name="file" type="file" id="file"
+               placeholder="Загрузите изобржание для товара" multiple><br>
+        <footer>
+            <button type="submit" class="btn btn-primary">Добавить товар</button>
+            <a class="btn btn-secondary" href="/api/products" role="button">Назад</a>
+        </footer>
+    </form>
 </div>
 </body>
-<br>
-<form action="/api/products/create" method="post">
-    <div>
-        <label>
-            <button type="submit" class="btn btn-primary">Создать товар</button>
-        </label>
-    </div>
-</form>
-<form action="/api/products" method="get">
-    <div>
-        <label>
-            <button type="submit" class="btn btn-secondary">Назад</button>
-        </label>
-    </div>
-</form>
 </br>
 </html>

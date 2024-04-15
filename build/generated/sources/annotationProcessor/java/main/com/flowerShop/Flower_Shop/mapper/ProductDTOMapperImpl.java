@@ -1,14 +1,15 @@
 package com.flowerShop.Flower_Shop.mapper;
 
-import com.flowerShop.Flower_Shop.dto.ProductCreateDTO;
-import com.flowerShop.Flower_Shop.dto.ProductShowDTO;
+import com.flowerShop.Flower_Shop.dto.productDTO.ProductCreateDTO;
+import com.flowerShop.Flower_Shop.dto.productDTO.ProductShowDTO;
+import com.flowerShop.Flower_Shop.dto.productDTO.ProductUpdateDTO;
 import com.flowerShop.Flower_Shop.model.Product;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-03-24T14:15:37+0300",
+    date = "2024-04-15T20:12:56+0300",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.9 (Private Build)"
 )
 @Component
@@ -27,6 +28,7 @@ public class ProductDTOMapperImpl extends ProductDTOMapper {
         productShowDTO.setDescription( product.getDescription() );
         productShowDTO.setPrice( product.getPrice() );
         productShowDTO.setPurchasePrice( product.getPurchasePrice() );
+        productShowDTO.setNameOfPhoto( product.getNameOfPhoto() );
 
         return productShowDTO;
     }
@@ -44,7 +46,30 @@ public class ProductDTOMapperImpl extends ProductDTOMapper {
         product.description( productCreateDTO.getDescription() );
         product.price( productCreateDTO.getPrice() );
         product.purchasePrice( productCreateDTO.getPurchasePrice() );
+        product.nameOfPhoto( productCreateDTO.getNameOfPhoto() );
 
         return product.build();
+    }
+
+    @Override
+    public void update(ProductUpdateDTO productUpdateDTO, Product product) {
+        if ( productUpdateDTO == null ) {
+            return;
+        }
+
+        if ( productUpdateDTO.getCategory() != null ) {
+            product.setCategory( productUpdateDTO.getCategory() );
+        }
+        if ( productUpdateDTO.getName() != null ) {
+            product.setName( productUpdateDTO.getName() );
+        }
+        if ( productUpdateDTO.getDescription() != null ) {
+            product.setDescription( productUpdateDTO.getDescription() );
+        }
+        product.setPrice( productUpdateDTO.getPrice() );
+        product.setPurchasePrice( productUpdateDTO.getPurchasePrice() );
+        if ( productUpdateDTO.getNameOfPhoto() != null ) {
+            product.setNameOfPhoto( productUpdateDTO.getNameOfPhoto() );
+        }
     }
 }

@@ -9,16 +9,39 @@
               integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
               crossorigin="anonymous">
     </head>
-    <h1>Редактирование товара</h1>
+    <h1> База данных магазина "Процветание" </h1>
 </div>
 <body>
-<form action="#" th:action="@{/api/products/update/{name}" th:object="${product}" method="post">
-    <input type="text" name="Название товара" th:text="*{name}" />
-    <input type="text" name="Категория товара" th:text="*{category}">
-    <input type="text" name="Описание товара" th:text="*{description}">
-    <input type="number" name="Цна товара" th:text="*{price}">
-    <input type="number" name="Закупочная цена товара" th:text="*{purchasePrice}">
-    <button type="submit">Edit product</button>
+<div class="container mt-5 mb-3">
+    <h1>Редактирование товара</h1>
+<form action ="#" th:action="${name}" method="POST" enctype="multipart/form-data">
+    <p1>Название товара</p1>
+    <input type="text" th:value="${name}" name="name" placeholder="Название товара" class="form-control"><br>
+        <label>Категория товара:</label>
+        <select name="category" id="categories">
+            <option selected th:value="${category}">
+                <p1 th:text="${category}"></p1>
+            </option>
+            <td th:each="c: ${categories}">
+                <option th:text="${c}"></option>
+            </td>
+        </select>
+    <br>
+        <p1>Описание товара</p1>
+    </br>
+    <input type="text" th:value="${description}" name="description" placeholder="Описание или комментарий к товару" class="form-control"><br>
+        <p1>Цена товара</p1>
+    <input type="text" th:value="${price}" name="price" placeholder="Цена товара" class="form-control"><br>
+        <p1>Закупочная цена товара</p1>
+    <input type="text" th:value="${purchase_price}" name="purchase_price" placeholder="Цена товара" class="form-control"><br>
+        <p1>Изображение товара</p1>
+    <input class="form-control" name="file" type="file" id="file"
+           placeholder="Загрузите изобржание для товара" multiple><br>
+    <footer>
+        <button type="submit" class="btn btn-primary">Редактировать товар</button>
+        <a class="btn btn-secondary" href="/api/products" role="button">Назад</a>
+    </footer>
 </form>
+</div>
 </body>
 </html>

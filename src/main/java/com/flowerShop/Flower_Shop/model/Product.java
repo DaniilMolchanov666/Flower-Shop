@@ -1,16 +1,15 @@
 package com.flowerShop.Flower_Shop.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import jakarta.ws.rs.DefaultValue;
 import lombok.*;
-import org.glassfish.grizzly.http.util.TimeStamp;
-import org.mapstruct.MappingTarget;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+
+import java.io.Serializable;
 
 @Entity
 @Table(name = "flower_shop_products")
@@ -19,9 +18,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @NoArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "name")
 @EnableJpaAuditing
-public class Product {
+@JsonSerialize
+public class Product implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,5 +52,9 @@ public class Product {
     @Positive
     @DefaultValue(value = "0")
     private int purchasePrice;
+
+    @Column(name = "name_of_photo")
+    @DefaultValue(value = "без фото.jpg")
+    private String nameOfPhoto;
 }
 

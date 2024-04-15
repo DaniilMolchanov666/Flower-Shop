@@ -8,16 +8,58 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
           integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
           crossorigin="anonymous">
+    <style>
+        p {
+         text-indent: 20px;
+        }
+    </style>
 </head>
 <h1> База данных магазина "Процветание" </h1>
+    <div class="alert alert-success" role="alert" th:text="${success}" th:if="${success}" size="50"></div>
+    <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}" size="50"></div>
+    <form action="/api/products/find" method="get">
+        <div class="btn-group">
+            <label>
+                <p1>
+                    <input type="text" name="name" placeholder="Название товара" size="50"/>
+                    <button type="submit" class="btn btn-primary">Найти</button>
+                </p1>
+            </label>
+        </div>
+    </form>
 <form action="/api/products/create" method="get">
-    <div>
+    <div class="btn-group">
         <label>
             <button type="submit" class="btn btn-primary">Добавить новый товар</button>
         </label>
     </div>
 </form>
 </div>
+<div class="btn-group p-1">
+    <form action="/api/products" method="get">
+        <p1>Фильтр по категории:</p1>
+        <select name="category" id="categories">
+            <option selected value="all">Все</option>
+            <option value="Цветы">Цветы</option>
+            <option value="Монобукет">Монобукет</option>
+            <option value="Составной букет">Составной букет</option>
+            <option value="Другое">Другое</option>
+        </select>
+        <p1>Отсортировать по:</p1>
+        <select name="orderBy" id="orderBy">
+            <option selected value="price">Цена</option>
+            <option value="name">Название</option>
+            <option value="purchasePrice">Закупочная цена</option>
+        </select>
+    <div>
+        <button type="submit" class="btn btn-primary mb-2">Применить</button>
+    </div>
+    </form>
+</div>
+<br>
+    <h4>Всего товаров: </h4>
+    <h4 th:text="${countOfProducts}"></h4>
+</br>
 <table class="table table-ligth table-striped-columns">
     <thead>
     <tr>
@@ -29,13 +71,13 @@
         <th scope="col"> Изображение:</th>
     </tr>
     </thead>
-<tbody th:each="product: ${list}">
+<tbody th:each="product: ${listOfProducts}">
     <tr>
         <td>
             <p1 th:text="${product.getName()}"></p1>
             <br>
-            <a class="btn btn-success" href="/api/products/update/${product.getName()}" role="button">Редактировать</a>
-            <a class="btn btn-danger" href="/api/products/d elete/${product.getName()}" role="button">Удалить</a>
+            <a class="btn btn-success p-2" th:href="'/api/products/update/' + ${product.getName()}" role="button">Редактировать</a>
+            <a class="btn btn-danger p-2" th:href="'/api/products/delete/' + ${product.getName()}" role="button">Удалить</a>
             </br>
         </td>
         <td th:text="${product.getCategory()}"/>
@@ -43,9 +85,43 @@
         <td th:text="${product.getPrice()}"/>
         <td th:text="${product.getPurchasePrice()}"/>
         <td>
-            <img th:src="@{Букет 1.jpeg}">
+            <img th:src="@{/imageDisplay(nameOfPhoto=${product.getNameOfPhoto()})}" width="20%">
         </td>
     </tr>
 </tbody>
 </table>
+
+<nav aria-label="Page navigation example" th:if="${size < countOfProducts}">
+    <ul class="pagination">
+        <li class="page-item mb-2 p-2"><a class="page-link"
+                                 href="#" th:href="@{/api/products(page=${currentPage - 1 < 1 ? currentPage : currentPage - 1 }, size=${size})}">
+            Назад</a></li>
+        <li>
+            <p1 th:text="${currentPage}"></p1>
+            <p1> из </p1>
+            <p1 th:text="${page.getTotalPages()}"></p1>
+        </li>
+<!--        <li><a class="btn btn-ligth p-2" th:if="${page.getTotalPages() > 0}"-->
+<!--                                 th:each="pageNumber : ${listOfPages}" href="#"-->
+<!--                                                     th:href="@{/api/products(page=${pageNumber})}"-->
+<!--                                                     th:class="${pageNumber == pageNumber + 1}-->
+<!--                                                     ? active" role="button">[[${pageNumber}]]</a></li>-->
+        <li class="page-item mb-2 p-2"><a class="page-link"
+                                 href="#" th:href="@{/api/products(page=${currentPage + 1 > page.getTotalPages() ? currentPage : currentPage + 1},
+                                  size=${size})}">
+            Вперед</a></li>
+    </ul>
+</nav>
+<form class="form-select form-select-sm" action ="/api/products" method="get">
+    <label>Кол-во товаров:</label>
+    <select name="size" id="size">
+        <option selected th:value="${size}">
+            <p1 th:text="${size}"></p1>
+        </option>
+        <td th:each="s: ${sizes}"   >
+            <option th:text="${s}"></option>
+        </td>
+    </select>
+    <button type="submit" class="btn btn-primary">Применить</button>
+</form>
 </html>

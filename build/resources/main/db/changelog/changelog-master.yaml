@@ -1,7 +1,7 @@
 databaseChangeLog:
 
   - changeSet:
-      id: 5
+      id: 12
       author: cottonpads
       preConditions:
         - onFail: MARK_RAN
@@ -37,5 +37,75 @@ databaseChangeLog:
                   name: purchase_price
                   type: integer
                   remarks: Закупочная цена
+              - column:
+                  name: name_of_photo
+                  type: varchar(50)
+  - changeSet:
+      id: 9
+      author: cottonpads
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: users_from_bot
+      changes:
+        - createTable:
+            tableName: users_from_bot
+            remarks: Пользователи телеграмм бота
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(50)
+                  remarks: Имя пользователя
+              - column:
+                  name: number_of_phone
+                  type: varchar(25)
+              - column:
+                  name: chat_id
+                  type: bigint
+              - column:
+                  name: list_of_requests
+                  type: text
+  - changeSet:
+      id: 10
+      author: cottonpads
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: users_last_states
+      changes:
+        - createTable:
+            tableName: users_last_states
+            remarks: Последние операции пользователей
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: chat_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: bot_state
+                  type: varchar(50)
+              - column:
+                  name: last_viewed_product
+                  type: varchar(50)
+
+
+
 
 
