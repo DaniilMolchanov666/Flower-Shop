@@ -83,7 +83,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         }
     }
 
-    //TODO добавить меню с отображение пустой корзины (одна кнопка "назад" и инфа "корзина пуста!")
+    //TODO настроить грамотное удаление и устранить неправильную работу в случае отсуствия продукта при его открытии в корзи
     public void buttonsCheck(Update update) throws TelegramApiException {
         String currentButton = update.getCallbackQuery().getData();
         long id = update.getCallbackQuery().getFrom().getId();
@@ -118,47 +118,23 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 }
                 setStateForUserAndSendProduct(update, Optional.of(list.get(index)), UpdateState.FLOWERS.name());
                 break;
-//TODO убрать добавление последнего продукта после нажатия любой из кнопок
-// (настроить заполнение listOfRequests при первом заказе)
-            case "REQUEST_BUTTON", "BACK_TO_BUCKET_BUTTON", "DELETE_BUTTON", "BUCKET_BUTTON":
-                var userOfBot = userService.findUser(id);
+            case "REQUEST_BUTTON", "DELETE_BUTTON":
+                var userServiceUser = userService.findUser(id);
                 Optional<Product> lastProduct = userStateService.getLasViewedProductOfUser(id);
 
                 if (currentButton.equals("DELETE_BUTTON")) {
-                    userOfBot  = userService.findUser(id);
-                    userOfBot.setListOfRequests(null);
-                    userService.save(userOfBot);
+                    userServiceUser  = userService.findUser(id);
+                    userServiceUser.setListOfRequests(null);
+                    userService.save(userServiceUser);
                     sendChooseCategoryMenu(id);
                     return;
                 }
 
-                String requests  = userOfBot.getListOfRequests();
-                List<Product> productList = new ArrayList<>();
-
-                productList.add(lastProduct.orElse(null));
-
-                if (requests != null && !requests.isEmpty()) {
-                    for (String s : requests.split(",")) {
-                        productList.add(productsService.findProduct(s).orElse(null));
-                    }
-                    productList.removeIf(Objects::isNull);
-                    requests =  productList.stream().map(Product::getName).collect(Collectors.joining(","));
-
-                    userOfBot.setListOfRequests(requests);
-                    userService.save(userOfBot);
-
-                    this.executeAsync(MultiContentMessageSender
-                            .sendMessage(id, "Ваша корзина:\n",
-                                    MarkupCreator.getButtonsForALlRequestsInBucket(productList)));
-                    this.executeAsync(MultiContentMessageSender.deleteMessage(update));
-                } else {
-                    requests = lastProduct.isPresent() ? lastProduct.get().getName() : "";
-                    userOfBot.setListOfRequests(requests);
-                    userService.save(userOfBot);
-                    this.executeAsync(MultiContentMessageSender.sendMessage(id, "Ваша корзина пуста!",
-                            MarkupCreator.getBackMenuButton()));
-                    this.executeAsync(MultiContentMessageSender.deleteMessage(update));
-                }
+                getBucket(update, userServiceUser, lastProduct, id);
+                break;
+            case "BACK_TO_BUCKET_BUTTON", "BUCKET_BUTTON":
+                userServiceUser = userService.findUser(id);
+                getBucket(update, userServiceUser, Optional.empty(), id);
                 break;
             case "CONTINUE_BUTTON":
                 userState = userStateService.findAllByChatId(id).getLast();
@@ -215,26 +191,62 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     List<String> arrayOfProducts = Arrays.stream(userService.findUser(id).getListOfRequests()
                             .split(",")).toList();
 
+                    var lastViewedProduct = userStateService.getLasViewedProductOfUser(id);
                     boolean isDeleted = false;
                     for (String currentProduct: arrayOfProducts) {
-                        if (currentProduct.equals(userStateService.getLasViewedProductOfUser(id).get().getName())) {
+                        if (lastViewedProduct.isPresent() &&
+                                Objects.equals(currentProduct, lastViewedProduct.get().getName())) {
                             if (!isDeleted) {
                                 isDeleted = true;
                                 continue;
                             }
                         }
-                        listOfProductsExcludeDeleted.add(productsService.findProduct(currentProduct).get());
+                        listOfProductsExcludeDeleted.add(productsService.findProduct(currentProduct).orElse(null));
                     }
+                    listOfProductsExcludeDeleted.removeIf(Objects::isNull);
                     var u = userService.findUser(id);
                     u.setListOfRequests(listOfProductsExcludeDeleted.stream()
                             .map(Product::getName)
                             .collect(Collectors.joining(",")));
                     userService.save(u);
-                    this.executeAsync(MultiContentMessageSender
-                            .sendMessage(id, "Ваша корзина:\n",
-                                    MarkupCreator.getButtonsForALlRequestsInBucket(listOfProductsExcludeDeleted)));
+
+                    if (listOfProductsExcludeDeleted.isEmpty()) {
+                        this.executeAsync(MultiContentMessageSender.sendMessage(id, "Ваша корзина пуста!",
+                                MarkupCreator.getBackMenuButton()));
+                        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                    } else {
+                        this.executeAsync(MultiContentMessageSender
+                                .sendMessage(id, "Ваша корзина:\n",
+                                        MarkupCreator.getButtonsForALlRequestsInBucket(listOfProductsExcludeDeleted)));
+                        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                    }
                 }
                 break;
+        }
+    }
+
+    private void getBucket(Update update, ShopUser userOfBot, Optional<Product> lastProduct, long id) throws TelegramApiException {
+
+        String requests = userOfBot.getListOfRequests() != null ? userOfBot.getListOfRequests() : "";
+
+        List<Product> listOfRequests = new ArrayList<>(Arrays.stream(requests.split(","))
+                .map(i -> productsService.findProduct(i).orElse(null))
+                .toList());
+        listOfRequests.add(lastProduct.orElse(null));
+        listOfRequests.removeIf(Objects::isNull);
+
+        userOfBot.setListOfRequests(listOfRequests.stream().map(Product::getName).collect(Collectors.joining(",")));
+        userService.save(userOfBot);
+
+        if (listOfRequests.isEmpty()) {
+            this.executeAsync(MultiContentMessageSender.sendMessage(id, "Ваша корзина пуста!",
+                    MarkupCreator.getBackMenuButton()));
+            this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+        } else {
+            this.executeAsync(MultiContentMessageSender
+                    .sendMessage(id, "Ваша корзина:\n",
+                            MarkupCreator.getButtonsForALlRequestsInBucket(listOfRequests)));
+            this.executeAsync(MultiContentMessageSender.deleteMessage(update));
         }
     }
 
