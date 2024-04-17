@@ -107,16 +107,20 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 sendStartMenu(id);
                 break;
             case "FORWARD_BUTTON", "BACKWARD_BUTTON":
-                product = userStateService.getLasViewedProductOfUser(id).get();
-                List<Product> list = productsService.findByCategory(product.getCategory());
-                if (currentButton.equals("FORWARD_BUTTON")) {
-                    index = list.indexOf(product) >= list.size() - 1
-                            ? list.indexOf(product) : list.indexOf(product) + 1;
+                if ( userStateService.getLasViewedProductOfUser(id).isPresent()) {
+                    product = userStateService.getLasViewedProductOfUser(id).get();
+                    List<Product> list = productsService.findByCategory(product.getCategory());
+                    if (currentButton.equals("FORWARD_BUTTON")) {
+                        index = list.indexOf(product) >= list.size() - 1
+                                ? list.indexOf(product) : list.indexOf(product) + 1;
+                    } else {
+                        index = list.indexOf(product) <= 0
+                                ? list.indexOf(product) : list.indexOf(product) - 1;
+                    }
+                    setStateForUserAndSendProduct(update, Optional.of(list.get(index)), UpdateState.FLOWERS.name());
                 } else {
-                    index = list.indexOf(product) <= 0
-                            ? list.indexOf(product) : list.indexOf(product) - 1;
+                    setStateForUserAndSendProduct(update, Optional.empty(), UpdateState.FLOWERS.name());
                 }
-                setStateForUserAndSendProduct(update, Optional.of(list.get(index)), UpdateState.FLOWERS.name());
                 break;
             case "REQUEST_BUTTON", "DELETE_BUTTON":
                 var userServiceUser = userService.findUser(id);
@@ -177,33 +181,31 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                 break;
             default:
-                if (!currentButton.contains("DELETE_PRODUCT_BUTTON")) {
+                StringBuilder message = new StringBuilder();
+                if (!currentButton.contains("d")) {
                     Optional<Product> currentProduct = productsService.findProduct(update.getCallbackQuery().getData());
                     if (currentProduct.isPresent()) {
                         this.executeAsync(PhotoSender.sendMessage(update, currentProduct.get(),
-                                MarkupCreator.getDeleteProductMenu()));
+                                MarkupCreator.getDeleteProductMenu(currentProduct)));
                         this.executeAsync(PhotoSender.deleteMessage(update));
                     } else {
-                        setStateForUserAndSendProduct(update, Optional.empty(), UpdateState.BUCKET_STATE.name());
+                        getBucket(update, userService.findUser(id), Optional.empty(), id);
                     }
                 } else {
-                    List<Product> listOfProductsExcludeDeleted = new ArrayList<>();
-                    List<String> arrayOfProducts = Arrays.stream(userService.findUser(id).getListOfRequests()
-                            .split(",")).toList();
+                    Optional<Product> currentProduct = productsService.findProduct(update.getCallbackQuery().getData()
+                            .substring(1));
+                    List<Product> listOfProductsExcludeDeleted = new ArrayList<>(Arrays.stream(userService.findUser(id)
+                                    .getListOfRequests().split(","))
+                            .map(i -> productsService.findProduct(i).orElse(null))
+                            .toList());
 
-                    var lastViewedProduct = userStateService.getLasViewedProductOfUser(id);
-                    boolean isDeleted = false;
-                    for (String currentProduct: arrayOfProducts) {
-                        if (lastViewedProduct.isPresent() &&
-                                Objects.equals(currentProduct, lastViewedProduct.get().getName())) {
-                            if (!isDeleted) {
-                                isDeleted = true;
-                                continue;
-                            }
-                        }
-                        listOfProductsExcludeDeleted.add(productsService.findProduct(currentProduct).orElse(null));
-                    }
+                    listOfProductsExcludeDeleted.remove(currentProduct.orElse(null));
                     listOfProductsExcludeDeleted.removeIf(Objects::isNull);
+
+                    if (currentProduct.isEmpty()) {
+                        message.append("(некоторый контент был удален администрацией)\n");
+                    }
+
                     var u = userService.findUser(id);
                     u.setListOfRequests(listOfProductsExcludeDeleted.stream()
                             .map(Product::getName)
@@ -211,12 +213,14 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     userService.save(u);
 
                     if (listOfProductsExcludeDeleted.isEmpty()) {
-                        this.executeAsync(MultiContentMessageSender.sendMessage(id, "Ваша корзина пуста!",
+                        message.append("Ваша корзина пуста!");
+                        this.executeAsync(MultiContentMessageSender.sendMessage(id, message.toString(),
                                 MarkupCreator.getBackMenuButton()));
                         this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                     } else {
+                        message.append("Ваша корзина:\n");
                         this.executeAsync(MultiContentMessageSender
-                                .sendMessage(id, "Ваша корзина:\n",
+                                .sendMessage(id, message.toString(),
                                         MarkupCreator.getButtonsForALlRequestsInBucket(listOfProductsExcludeDeleted)));
                         this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                     }
@@ -227,11 +231,17 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
     private void getBucket(Update update, ShopUser userOfBot, Optional<Product> lastProduct, long id) throws TelegramApiException {
 
+        StringBuilder message = new StringBuilder();
         String requests = userOfBot.getListOfRequests() != null ? userOfBot.getListOfRequests() : "";
 
-        List<Product> listOfRequests = new ArrayList<>(Arrays.stream(requests.split(","))
+        List<Product> listOfRequests = new LinkedList<>(Arrays.stream(requests.split(","))
                 .map(i -> productsService.findProduct(i).orElse(null))
                 .toList());
+
+        if (listOfRequests.size() != Arrays.asList(requests.split(",")).size()) {
+            message.append("(некоторый контент был удален администрацией)\n");
+        }
+
         listOfRequests.add(lastProduct.orElse(null));
         listOfRequests.removeIf(Objects::isNull);
 
@@ -239,12 +249,12 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         userService.save(userOfBot);
 
         if (listOfRequests.isEmpty()) {
-            this.executeAsync(MultiContentMessageSender.sendMessage(id, "Ваша корзина пуста!",
+            this.executeAsync(MultiContentMessageSender.sendMessage(id, message.append("Ваша корзина пуста!").toString(),
                     MarkupCreator.getBackMenuButton()));
             this.executeAsync(MultiContentMessageSender.deleteMessage(update));
         } else {
             this.executeAsync(MultiContentMessageSender
-                    .sendMessage(id, "Ваша корзина:\n",
+                    .sendMessage(id, message.append("Ваша корзина:\n").toString(),
                             MarkupCreator.getButtonsForALlRequestsInBucket(listOfRequests)));
             this.executeAsync(MultiContentMessageSender.deleteMessage(update));
         }

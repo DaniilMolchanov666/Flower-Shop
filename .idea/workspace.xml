@@ -17,6 +17,7 @@
       <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/FlowerShopBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/FlowerShopBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/MarkupCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/MarkupCreator.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

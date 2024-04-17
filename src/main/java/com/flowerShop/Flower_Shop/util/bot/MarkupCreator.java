@@ -7,6 +7,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 //TODO настроить возможность доступа к какждой кнопке для упрощения логики класса и возможности внедрения новых функций
 public class MarkupCreator {
@@ -148,7 +149,7 @@ public class MarkupCreator {
         return inlineKeyboardMarkup;
     }
 
-    public static InlineKeyboardMarkup getDeleteProductMenu() {
+    public static InlineKeyboardMarkup getDeleteProductMenu(Optional<Product> p) {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
 
         List<List<InlineKeyboardButton>> listRows = new ArrayList<>();
@@ -158,7 +159,7 @@ public class MarkupCreator {
 
         var buttonForDelete= new InlineKeyboardButton();
         buttonForDelete.setText("Удалить из корзины" + EmojiParser.parseToUnicode(":scissors:"));
-        buttonForDelete.setCallbackData("DELETE_PRODUCT_BUTTON");
+        buttonForDelete.setCallbackData("d" + p.map(Product::getName).orElse("no value"));
 
         var buttonForBack= new InlineKeyboardButton();
         buttonForBack.setText("Вернуться в корзину" + EmojiParser.parseToUnicode(":arrow_left:"));
