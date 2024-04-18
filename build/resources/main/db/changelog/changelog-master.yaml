@@ -1,7 +1,7 @@
 databaseChangeLog:
 
   - changeSet:
-      id: 12
+      id: 13
       author: cottonpads
       preConditions:
         - onFail: MARK_RAN
@@ -32,10 +32,10 @@ databaseChangeLog:
                   type: text
               - column:
                   name: price
-                  type: integer
+                  type: varchar(50)
               - column:
                   name: purchase_price
-                  type: integer
+                  type: varchar(50)
                   remarks: Закупочная цена
               - column:
                   name: name_of_photo

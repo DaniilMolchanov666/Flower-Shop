@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-17T20:39:59+0300",
+    date = "2024-04-18T23:45:28+0300",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.9 (Private Build)"
 )
 @Component
@@ -66,8 +66,12 @@ public class ProductDTOMapperImpl extends ProductDTOMapper {
         if ( productUpdateDTO.getDescription() != null ) {
             product.setDescription( productUpdateDTO.getDescription() );
         }
-        product.setPrice( productUpdateDTO.getPrice() );
-        product.setPurchasePrice( productUpdateDTO.getPurchasePrice() );
+        if ( productUpdateDTO.getPrice() != null ) {
+            product.setPrice( productUpdateDTO.getPrice() );
+        }
+        if ( productUpdateDTO.getPurchasePrice() != null ) {
+            product.setPurchasePrice( productUpdateDTO.getPurchasePrice() );
+        }
         if ( productUpdateDTO.getNameOfPhoto() != null ) {
             product.setNameOfPhoto( productUpdateDTO.getNameOfPhoto() );
         }

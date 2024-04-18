@@ -1,10 +1,6 @@
 package com.flowerShop.Flower_Shop.sender;
 
-import com.flowerShop.Flower_Shop.dto.productDTO.ProductShowDTO;
 import com.flowerShop.Flower_Shop.model.Product;
-import com.flowerShop.Flower_Shop.repository.ProductsRepository;
-import com.flowerShop.Flower_Shop.util.bot.MarkupCreator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;

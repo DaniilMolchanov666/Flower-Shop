@@ -15,8 +15,10 @@ import com.flowerShop.Flower_Shop.service.web.ProductsServiceImpl;
 import com.flowerShop.Flower_Shop.util.bot.UpdateState;
 import com.flowerShop.Flower_Shop.util.bot.MarkupCreator;
 import com.flowerShop.Flower_Shop.util.bot.UserMessageProvider;
+import liquibase.util.StringUtil;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
@@ -83,7 +85,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         }
     }
 
-    //TODO настроить грамотное удаление и устранить неправильную работу в случае отсуствия продукта при его открытии в корзи
+
     public void buttonsCheck(Update update) throws TelegramApiException {
         String currentButton = update.getCallbackQuery().getData();
         long id = update.getCallbackQuery().getFrom().getId();
@@ -182,7 +184,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 break;
             default:
                 StringBuilder message = new StringBuilder();
-                if (!currentButton.contains("d")) {
+                if (!currentButton.contains("DELETE_BUTTON")) {
                     Optional<Product> currentProduct = productsService.findProduct(update.getCallbackQuery().getData());
                     if (currentProduct.isPresent()) {
                         this.executeAsync(PhotoSender.sendMessage(update, currentProduct.get(),
@@ -192,10 +194,12 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                         getBucket(update, userService.findUser(id), Optional.empty(), id);
                     }
                 } else {
-                    Optional<Product> currentProduct = productsService.findProduct(update.getCallbackQuery().getData()
-                            .substring(1));
-                    List<Product> listOfProductsExcludeDeleted = new ArrayList<>(Arrays.stream(userService.findUser(id)
-                                    .getListOfRequests().split(","))
+                    String pressedProductName = StringUtils.removeStart(update.getCallbackQuery().getData(),
+                            "DELETE_BUTTON");
+                    Optional<Product> currentProduct = productsService.findProduct(pressedProductName);
+
+                    List<Product> listOfProductsExcludeDeleted = new LinkedList<>(Arrays.stream(userService.findUser(id)
+                                    .getListOfRequests().split(", "))
                             .map(i -> productsService.findProduct(i).orElse(null))
                             .toList());
 
@@ -209,7 +213,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     var u = userService.findUser(id);
                     u.setListOfRequests(listOfProductsExcludeDeleted.stream()
                             .map(Product::getName)
-                            .collect(Collectors.joining(",")));
+                            .collect(Collectors.joining(", ")));
                     userService.save(u);
 
                     if (listOfProductsExcludeDeleted.isEmpty()) {
@@ -231,21 +235,23 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
     private void getBucket(Update update, ShopUser userOfBot, Optional<Product> lastProduct, long id) throws TelegramApiException {
 
+        String emptyStringForFirstRequest = "";
         StringBuilder message = new StringBuilder();
-        String requests = userOfBot.getListOfRequests() != null ? userOfBot.getListOfRequests() : "";
+        String requests = userOfBot.getListOfRequests() != null ? userOfBot.getListOfRequests(): emptyStringForFirstRequest;
 
-        List<Product> listOfRequests = new LinkedList<>(Arrays.stream(requests.split(","))
+        List<Product> listOfRequests = new LinkedList<>(Arrays.stream(requests.split(", "))
+                .dropWhile(String::isEmpty)
                 .map(i -> productsService.findProduct(i).orElse(null))
                 .toList());
 
-        if (listOfRequests.size() != Arrays.asList(requests.split(",")).size()) {
+        if (listOfRequests.contains(null)) {
             message.append("(некоторый контент был удален администрацией)\n");
         }
 
         listOfRequests.add(lastProduct.orElse(null));
         listOfRequests.removeIf(Objects::isNull);
 
-        userOfBot.setListOfRequests(listOfRequests.stream().map(Product::getName).collect(Collectors.joining(",")));
+        userOfBot.setListOfRequests(listOfRequests.stream().map(Product::getName).collect(Collectors.joining(", ")));
         userService.save(userOfBot);
 
         if (listOfRequests.isEmpty()) {
@@ -274,7 +280,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
             userStateService.setState(id, product, state);
         } else {
             this.executeAsync(MultiContentMessageSender.sendMessage(id,
-                    UserMessageProvider.infoIfCategoryIsNull,
+                    "К сожалению, на данный момент товары отсутствуют!",
                     MarkupCreator.getBackMenuButton()));
             this.executeAsync(PhotoSender.deleteMessage(update));
         }
@@ -343,18 +349,10 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
         User userFromTg = update.getCallbackQuery().getFrom();
 
-        String fullName;
-        String userName;
-        if (userFromTg.getLastName() != null) {
-            fullName = userFromTg.getFirstName() + " " + userFromTg.getLastName();
-        } else {
-            fullName = "Нет информации";
-        }
-        if (userFromTg.getUserName() != null) {
-            userName = "@" + userFromTg.getUserName();
-        } else {
-            userName = "Нет информации";
-        }
+        String fullName = userFromTg.getLastName() != null ? userFromTg.getFirstName() + " " + userFromTg.getLastName():
+                "Нет информации";
+        String userName = userFromTg.getUserName() != null ? "@" + userFromTg.getUserName(): "Нет информации";
+
         String contentForRequest = String.format("Новый заказ!\n\n Имя клиента:" +
                 " %s\n\n ФИО: %s\n\n Ник в телеграм: %s\n\n Номер телефона: %s\n\n %s",
                 user.getName(), fullName, userName, user.getNumberOfPhone(), user.getListOfRequests());

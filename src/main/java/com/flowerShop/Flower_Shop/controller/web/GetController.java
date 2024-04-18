@@ -43,13 +43,13 @@ public class GetController {
     @GetMapping("/api/products")
     @ResponseStatus(HttpStatus.OK)
     public String showAllProducts(@RequestParam(value = "page", required = false, defaultValue = "1")
-                                      int pageNumber,
+                                  int pageNumber,
                                   @RequestParam(value = "size", required = false, defaultValue = "10")
                                   int sizeNumber,
                                   @RequestParam(value = "category", required = false, defaultValue = "all")
-                                      String category,
+                                  String category,
                                   @RequestParam(value = "orderBy", required = false, defaultValue = "price")
-                                      String orderBy,
+                                  String orderBy,
                                   Model model, RedirectAttributes redirectAttributes) {
 
         if (!redirectAttributes.getFlashAttributes().isEmpty()) {
@@ -72,7 +72,7 @@ public class GetController {
 
         page.forEach(p -> listForSHow.add(productDTOMapper.toProductShowDTO(p)));
 
-        switch(orderBy) {
+        switch (orderBy) {
             case "price":
                 listForSHow.sort(Comparator.comparing(ProductShowDTO::getPrice));
                 break;
@@ -111,6 +111,7 @@ public class GetController {
         } else {
             list = productsService.findAll();
         }
+
         list.forEach(i -> listForSHow.add(productDTOMapper.toProductShowDTO(i)));
         model.addAttribute("listOfProducts", listForSHow);
         return "show";
@@ -128,7 +129,12 @@ public class GetController {
     }
 
     @GetMapping("/api/products/update/{name}")
-    public String chooseProductForEdit(@PathVariable String name, Model model) {
+    public String chooseProductForEdit(@PathVariable String name, RedirectAttributes redirectAttributes, Model model) {
+        if (productsService.findProduct(name).isEmpty()) {
+            redirectAttributes.addFlashAttribute("error",
+                    "Товар '" + name + "' был удален!");
+            return "redirect:/api/products";
+        }
         var product = productsService.findProduct(name).get();
         var listOfCategoriesExcludingSelected = listOfCategories.stream()
                 .filter(i -> !i.equals(product.getCategory()))
@@ -145,7 +151,7 @@ public class GetController {
     @RequestMapping(value = "/imageDisplay", method = RequestMethod.GET)
     public void showImageForProductOnPage(@RequestParam(value = "nameOfPhoto", required = false) String name,
                                           HttpServletResponse response,
-                                          HttpServletRequest request) throws IOException {
+                                          HttpServletRequest request) {
 
         String PATH_FOR_FLOWERS = "src/main/resources/flowers/";
         Path path = Paths.get(PATH_FOR_FLOWERS + name);
@@ -153,16 +159,15 @@ public class GetController {
         try {
             file = Files.readAllBytes(path);
         } catch (IOException | NullPointerException e) {
-            log.error("Не удалось прочитать файл {} потому что он пуст ({})!", name, e.getMessage());
+            log.error("Фото для товара {} не было загружено!", name);
         }
         response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-            try {
-                response.getOutputStream().write(file);
-                response.getOutputStream().close();
-            } catch (IOException | NullPointerException e) {
-                log.error("Не удалось вывести файл {} потому что его не существует ({})!",
-                        name, e.getMessage());
-            }
-
+        try {
+            response.getOutputStream().write(file);
+            response.getOutputStream().close();
+        } catch (IOException | NullPointerException e) {
+            log.error("Не удалось вывести файл {} потому что его не существует ({})!",
+                    name, e.getMessage());
+        }
     }
 }

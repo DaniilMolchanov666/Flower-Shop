@@ -22,6 +22,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public ShopUser findUser(Long chatId) {
         return usersRepository.findByChatId(chatId);
     }

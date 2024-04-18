@@ -11,7 +11,7 @@ public class ProductShowDTO {
     private String name;
     private String category;
     private String description;
-    private int price;
-    private int purchasePrice;
+    private String price;
+    private String purchasePrice;
     private String nameOfPhoto;
 }

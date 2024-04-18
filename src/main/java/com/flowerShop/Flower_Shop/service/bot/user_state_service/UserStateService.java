@@ -46,6 +46,7 @@ public class UserStateService {
         return userStateRepository.findAllByChatId(id);
     }
 
+    @Transactional(readOnly = true)
     public Optional<Product> getLasViewedProductOfUser(long chatId) {
         var userState = userStateRepository.findAllByChatId(chatId).getLast();
         if (userState.getLastViewedProduct() != null

@@ -159,7 +159,7 @@ public class MarkupCreator {
 
         var buttonForDelete= new InlineKeyboardButton();
         buttonForDelete.setText("Удалить из корзины" + EmojiParser.parseToUnicode(":scissors:"));
-        buttonForDelete.setCallbackData("d" + p.map(Product::getName).orElse("no value"));
+        buttonForDelete.setCallbackData("DELETE_BUTTON" + p.map(Product::getName).orElse(""));
 
         var buttonForBack= new InlineKeyboardButton();
         buttonForBack.setText("Вернуться в корзину" + EmojiParser.parseToUnicode(":arrow_left:"));

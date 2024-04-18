@@ -16,6 +16,13 @@
     <header>
         <h1>Создание нового товара</h1>
     </header>
+    <tbody th:each="error: ${errors}">
+        <tr>
+            <td>
+                <div class="alert alert-danger" role="alert" th:text="${error}"  size="50"></div>
+            </td>
+        </tr>
+    </tbody>
     <form action ="/api/products/create" method="POST" enctype="multipart/form-data">
         <input type="text" name="name" required placeholder="Название товара" class="form-control"><br>
             <label for="categories">Категория товара:</label>
@@ -27,7 +34,7 @@
                 </select>
         <input type="text" name="description" placeholder="Описание или комментарий к товару" class="form-control"><br>
         <input type="text" name="price" required placeholder="Цена товара" class="form-control"><br>
-        <input type="text" name="purchase_price" placeholder="Закупочная цена товара" class="form-control"><br>
+        <input type="text" name="purchasePrice" placeholder="Закупочная цена товара" class="form-control"><br>
         <input class="form-control" name="file" type="file" id="file"
                placeholder="Загрузите изобржание для товара" multiple><br>
         <footer>

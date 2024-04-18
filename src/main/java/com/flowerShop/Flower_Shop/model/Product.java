@@ -45,13 +45,13 @@ public class Product implements Serializable {
 
     @Column
     @NotNull(message = "Укажите цену!")
-    @Positive(message = "Указанная цена должна быть больше 0!")
-    private int price;
+    @Pattern(regexp = "^[0-9]+$", message = "Цена должна быть целым положительным числом!")
+    private String price;
 
     @Column(name = "purchase_price")
-    @Positive
+    @Pattern(regexp = "^[0-9]+$", message = "Закупочная цена должна быть целым положительным числом!")
     @DefaultValue(value = "0")
-    private int purchasePrice;
+    private String purchasePrice;
 
     @Column(name = "name_of_photo")
     @DefaultValue(value = "без фото.jpg")

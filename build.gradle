@@ -50,6 +50,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation("org.springframework.session:spring-session-core:3.2.2")
+	implementation("org.hibernate.validator:hibernate-validator:8.0.1.Final")
+
 
 	compileOnly("org.projectlombok:lombok:1.18.32")
 	compileOnly 'org.projectlombok:lombok'
