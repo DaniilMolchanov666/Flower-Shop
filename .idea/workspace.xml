@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="08f8633f-6c83-4549-93db-cf9dcc740cf4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT-plain.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT-plain.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +43,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="Flower_Shop" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Flower_Shop" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
               </path>
               <path>
@@ -46,6 +56,30 @@
                 <item name="Flower_Shop" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build setup" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Flower_Shop" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="documentation" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Flower_Shop" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="help" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Flower_Shop" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="other" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Flower_Shop" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -102,30 +136,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle./home/daniilmolchanov/Рабочий стол/Flower_Shop [dependencies].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [:FlowerShopApplication.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [:FlowerShopBot.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [bootJar].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [bootRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [init].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Flower_Shop [wrapper].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/daniilmolchanov/Рабочий стол/Flower_Shop/src/main/resources/flowers&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.57020056&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Docker.Dockerfile.executor": "Run",
+    "Gradle./home/daniilmolchanov/Рабочий стол/Flower_Shop [dependencies].executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.Flower_Shop [:FlowerShopApplication.main()].executor": "Run",
+    "Gradle.Flower_Shop [:FlowerShopBot.main()].executor": "Run",
+    "Gradle.Flower_Shop [bootBuildImage].executor": "Run",
+    "Gradle.Flower_Shop [bootJar].executor": "Run",
+    "Gradle.Flower_Shop [bootRun].executor": "Run",
+    "Gradle.Flower_Shop [buildDependents].executor": "Run",
+    "Gradle.Flower_Shop [build].executor": "Run",
+    "Gradle.Flower_Shop [clean].executor": "Run",
+    "Gradle.Flower_Shop [compileJava].executor": "Run",
+    "Gradle.Flower_Shop [init].executor": "Run",
+    "Gradle.Flower_Shop [jar].executor": "Run",
+    "Gradle.Flower_Shop [wrapper].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/daniilmolchanov/Рабочий стол/Flower_Shop/src/main/resources/flowers",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.57020056",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/flowers" />
@@ -142,38 +180,12 @@
       <recent name="com.flowerShop.Flower_Shop" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Flower_Shop [build]">
+  <component name="RunManager" selected="Gradle.Flower_Shop [buildDependents]">
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
       <deployment type="dockerfile" />
       <method v="2" />
     </configuration>
-    <configuration name="FlowerShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.flowerShop.Flower_Shop.FlowerShopApplication" />
-      <module name="Flower_Shop.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flowerShop.Flower_Shop.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FlowerShopBot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.flowerShop.Flower_Shop.FlowerShopBot" />
-      <module name="Flower_Shop.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flowerShop.Flower_Shop.service.web.ProductsService" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Flower_Shop [bootJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Flower_Shop [bootBuildImage]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -184,7 +196,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="bootJar" />
+            <option value="bootBuildImage" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -195,7 +207,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Flower_Shop [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Flower_Shop [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -206,7 +218,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="build" />
+            <option value="bootRun" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -217,7 +229,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Flower_Shop [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Flower_Shop [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -228,7 +240,51 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="clean" />
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Flower_Shop [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="compileJava" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="Flower_Shop [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -241,11 +297,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.Flower_Shop [build]" />
-        <item itemvalue="Application.FlowerShopBot" />
-        <item itemvalue="Gradle.Flower_Shop [clean]" />
-        <item itemvalue="Gradle.Flower_Shop [bootJar]" />
-        <item itemvalue="Application.FlowerShopApplication" />
+        <item itemvalue="Gradle.Flower_Shop [buildDependents]" />
+        <item itemvalue="Gradle.Flower_Shop [bootBuildImage]" />
+        <item itemvalue="Gradle.Flower_Shop [compileJava]" />
+        <item itemvalue="Gradle.Flower_Shop [bootRun]" />
+        <item itemvalue="Gradle.Flower_Shop [jar]" />
       </list>
     </recent_temporary>
   </component>
