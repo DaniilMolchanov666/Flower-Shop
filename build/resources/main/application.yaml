@@ -16,6 +16,7 @@ spring:
         show_sql: false
         temp:
           use_jdbc_metadata_defaults: false
+    open-in-view: false
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yaml
 telegram:
