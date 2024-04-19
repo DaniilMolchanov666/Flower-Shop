@@ -25,6 +25,7 @@ import org.telegram.telegrambots.meta.api.objects.*;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.util.*;
 import java.util.List;
@@ -50,6 +51,16 @@ public class FlowerShopBot extends TelegramLongPollingBot {
     private static final long id_admin1 = 1402556700L;
 
     private static final long id_admin2 = 6831132148L;
+
+    @Override
+    public void onClosing() {
+        super.onClosing();
+    }
+
+    @Override
+    public void clearWebhook() throws TelegramApiRequestException {
+            super.clearWebhook();
+    }
 
     @SuppressWarnings("deprecation")
     public FlowerShopBot(FlowerShopBotConfig config) {
