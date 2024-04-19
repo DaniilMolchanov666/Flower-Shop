@@ -4,8 +4,6 @@ public enum UpdateState {
 
     FLOWERS,
 
-    BUCKET_STATE,
-
     NAME_REQUEST,
 
     PHONE_REQUEST,
@@ -15,6 +13,8 @@ public enum UpdateState {
     UPDATE_NAME,
 
     UPDATE_PHONE,
+
+    LETTER_STATE,
 
     CHECK_STATE
 }

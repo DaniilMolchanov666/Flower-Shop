@@ -1,6 +1,6 @@
 package com.flowerShop.Flower_Shop.config;
 
-import com.flowerShop.Flower_Shop.service.bot.FlowerShopBot;
+import com.flowerShop.Flower_Shop.FlowerShopBot;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

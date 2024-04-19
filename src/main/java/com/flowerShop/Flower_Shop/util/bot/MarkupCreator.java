@@ -188,12 +188,17 @@ public class MarkupCreator {
             listRows.add(productButton);
         }
         List<InlineKeyboardButton> requestButton = new ArrayList<>();
+        List<InlineKeyboardButton> letterButton = new ArrayList<>();
         List<InlineKeyboardButton> buttonForDeleteBucketList = new ArrayList<>();
         List<InlineKeyboardButton> deleteButtonList = new ArrayList<>();
 
         var buttonForRequest= new InlineKeyboardButton();
         buttonForRequest.setText("Заказать" + EmojiParser.parseToUnicode(":white_check_mark:"));
         buttonForRequest.setCallbackData("END_REQUEST_BUTTON");
+
+        var buttonForPostcard= new InlineKeyboardButton();
+        buttonForPostcard.setText("Написать текст для открытки" + EmojiParser.parseToUnicode(":love_letter:"));
+        buttonForPostcard.setCallbackData("LETTER_BUTTON");
 
         var buttonForDeleteBucket= new InlineKeyboardButton();
         buttonForDeleteBucket.setText("Очистить корзину" + EmojiParser.parseToUnicode(":wastebasket:"));
@@ -204,10 +209,12 @@ public class MarkupCreator {
         deleteButton.setCallbackData("CONTINUE_BUTTON");
 
         requestButton.add(buttonForRequest);
+        letterButton.add(buttonForPostcard);
         deleteButtonList.add(deleteButton);
         buttonForDeleteBucketList.add(buttonForDeleteBucket);
 
         listRows.add(requestButton);
+        listRows.add(letterButton);
         listRows.add(buttonForDeleteBucketList);
         listRows.add(deleteButtonList);
 

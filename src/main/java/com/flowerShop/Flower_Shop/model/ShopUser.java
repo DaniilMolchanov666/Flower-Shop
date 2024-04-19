@@ -29,6 +29,9 @@ public class ShopUser {
     @Column(name = "chat_id")
     private long chatId;
 
+    @Column(name = "postcard_text")
+    private String postcardText;
+
     @Column(name = "list_of_requests")
     private String listOfRequests;
 }

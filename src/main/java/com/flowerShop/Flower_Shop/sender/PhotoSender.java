@@ -39,8 +39,7 @@ public class PhotoSender {
         return deleteMessage;
     }
 
-    //TODO настроить шрифты и вывод порядкового номера продукта, категории и их количества в остатке
     public static String getCaptionOfProduct(Product product) {
-        return "_" + product.getName() + "\n" + product.getPrice() + " р." + "_";
+        return "*" + product.getName() + "*"  + "\n" + "_" + product.getPrice() + " р." + "_";
     }
 }

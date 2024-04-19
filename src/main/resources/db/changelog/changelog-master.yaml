@@ -41,7 +41,7 @@ databaseChangeLog:
                   name: name_of_photo
                   type: varchar(50)
   - changeSet:
-      id: 9
+      id: 15
       author: cottonpads
       preConditions:
         - onFail: MARK_RAN
@@ -70,6 +70,9 @@ databaseChangeLog:
               - column:
                   name: chat_id
                   type: bigint
+              - column:
+                  name: postcard_text
+                  type: text
               - column:
                   name: list_of_requests
                   type: text

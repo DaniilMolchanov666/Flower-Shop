@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-04-18T23:45:28+0300",
+    date = "2024-04-19T16:28:40+0300",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.9 (Private Build)"
 )
 @Component
@@ -21,16 +21,16 @@ public class ProductDTOMapperImpl extends ProductDTOMapper {
             return null;
         }
 
-        ProductShowDTO productShowDTO = new ProductShowDTO();
+        ProductShowDTO.ProductShowDTOBuilder productShowDTO = ProductShowDTO.builder();
 
-        productShowDTO.setName( product.getName() );
-        productShowDTO.setCategory( product.getCategory() );
-        productShowDTO.setDescription( product.getDescription() );
-        productShowDTO.setPrice( product.getPrice() );
-        productShowDTO.setPurchasePrice( product.getPurchasePrice() );
-        productShowDTO.setNameOfPhoto( product.getNameOfPhoto() );
+        productShowDTO.name( product.getName() );
+        productShowDTO.category( product.getCategory() );
+        productShowDTO.description( product.getDescription() );
+        productShowDTO.price( product.getPrice() );
+        productShowDTO.purchasePrice( product.getPurchasePrice() );
+        productShowDTO.nameOfPhoto( product.getNameOfPhoto() );
 
-        return productShowDTO;
+        return productShowDTO.build();
     }
 
     @Override

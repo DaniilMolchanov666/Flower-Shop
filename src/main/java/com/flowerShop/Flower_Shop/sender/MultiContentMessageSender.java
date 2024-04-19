@@ -17,8 +17,15 @@ public class MultiContentMessageSender {
     }
 
     public static DeleteMessage deleteMessage(Update update) {
-        int messageId = update.getCallbackQuery().getMessage().getMessageId();
-        long chatId = update.getCallbackQuery().getMessage().getChatId();
+        int messageId;
+        long chatId;
+        if (update.hasCallbackQuery()) {
+            messageId = update.getCallbackQuery().getMessage().getMessageId();
+            chatId = update.getCallbackQuery().getMessage().getChatId();
+        } else {
+            messageId = update.getMessage().getMessageId();
+            chatId = update.getMessage().getChatId();
+        }
 
         DeleteMessage deleteMessage = new DeleteMessage();
         deleteMessage.setChatId(chatId);

@@ -26,6 +26,9 @@ public class UserStateService {
 
     @Transactional
     public void save(UserState userState) {
+        if (userStateRepository.existsByChatId(userState.getChatId())) {
+            userStateRepository.deleteByChatId(userState.getChatId());
+        }
         userStateRepository.save(userState);
     }
 
@@ -36,10 +39,7 @@ public class UserStateService {
                 .botState(state)
                 .build();
         product.ifPresent(value -> userState.setLastViewedProduct(String.valueOf(value.getId())));
-        if (userStateRepository.findAllByChatId(id).contains(userState)) {
-            userStateRepository.save(userState);
-        }
-        userStateRepository.save(userState);
+        save(userState);
     }
 
     public ArrayDeque<UserState> findAllByChatId(long id) {
@@ -48,10 +48,12 @@ public class UserStateService {
 
     @Transactional(readOnly = true)
     public Optional<Product> getLasViewedProductOfUser(long chatId) {
-        var userState = userStateRepository.findAllByChatId(chatId).getLast();
-        if (userState.getLastViewedProduct() != null
-                && productsRepository.findById(Integer.valueOf(userState.getLastViewedProduct())).isPresent()) {
-            return Optional.of(productsRepository.findById(Integer.valueOf(userState.getLastViewedProduct())).get());
+        var userState = userStateRepository.findAllByChatId(chatId);
+
+        if (!userState.isEmpty()
+                && userState.getLast().getLastViewedProduct() != null
+                && productsRepository.findById(Integer.valueOf(userState.getLast().getLastViewedProduct())).isPresent()) {
+            return Optional.of(productsRepository.findById(Integer.valueOf(userState.getLast().getLastViewedProduct())).get());
         }
         return Optional.empty();
     }

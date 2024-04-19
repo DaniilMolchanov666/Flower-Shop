@@ -6,7 +6,7 @@ spring:
     enabled: true
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/cottonpads?user=daniilmolchanov&password=microcuts1928
+    url: jdbc:postgresql://127.0.0.1:5432
     username: daniilmolchanov
     password: microcuts1928
   jpa:
@@ -25,4 +25,4 @@ telegram:
   webhook-path: localhost:8080
 server:
   port:
-    8000
+    8080

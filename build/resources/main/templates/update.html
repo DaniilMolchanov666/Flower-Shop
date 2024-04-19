@@ -17,13 +17,13 @@
     <tbody th:each="error: ${errors}">
     <tr>
         <td>
-            <div class="alert alert-danger" role="alert" th:text="${error}"  size="50"></div>
+            <div class="alert alert-danger" role="alert" th:text="${error}" size="50"></div>
         </td>
     </tr>
     </tbody>
-<form action ="#" th:action="${name}" method="POST" enctype="multipart/form-data">
-    <p1>Название товара</p1>
-    <input type="text" th:value="${name}" name="name" placeholder="Название товара" class="form-control"><br>
+    <form action="#" th:action="${name}" method="POST" enctype="multipart/form-data">
+        <p1>Название товара</p1>
+        <input type="text" th:value="${name}" name="name" placeholder="Название товара" class="form-control"><br>
         <label>Категория товара:</label>
         <select name="category" id="categories">
             <option selected th:value="${category}">
@@ -33,22 +33,24 @@
                 <option th:text="${c}"></option>
             </td>
         </select>
-    <br>
+        <br>
         <p1>Описание товара</p1>
-    </br>
-    <input type="text" th:value="${description}" name="description" placeholder="Описание или комментарий к товару" class="form-control"><br>
+        </br>
+        <input type="text" th:value="${description}" name="description" placeholder="Описание или комментарий к товару"
+               class="form-control"><br>
         <p1>Цена товара</p1>
-    <input type="text" th:value="${price}" name="price" placeholder="Цена товара" class="form-control"><br>
+        <input type="text" th:value="${price}" name="price" placeholder="Цена товара" class="form-control"><br>
         <p1>Закупочная цена товара</p1>
-    <input type="text" th:value="${purchase_price}" name="purchasePrice" placeholder="Цена товара" class="form-control"><br>
+        <input type="text" th:value="${purchase_price}" name="purchasePrice" placeholder="Цена товара"
+               class="form-control"><br>
         <p1>Изображение товара</p1>
-    <input class="form-control" name="file" type="file" id="file"
-           placeholder="Загрузите изобржание для товара" multiple><br>
-    <footer>
-        <button type="submit" class="btn btn-primary">Редактировать товар</button>
-        <a class="btn btn-secondary" href="/api/products" role="button">Назад</a>
-    </footer>
-</form>
+        <input class="form-control" name="file" type="file" id="file"
+               placeholder="Загрузите изобржание для товара" multiple><br>
+        <footer>
+            <button type="submit" class="btn btn-primary">Редактировать товар</button>
+            <a class="btn btn-secondary" href="/api/products" role="button">Назад</a>
+        </footer>
+    </form>
 </div>
 </body>
 </html>
