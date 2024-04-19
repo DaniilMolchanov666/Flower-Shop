@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+  app:
+    container_name: springboot-postgresql
+    image: springboot-app
+    build: ./
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresqldb
+  postgresqldb:
+    image: postgres
+    build:
+      context: ./
+      dockerfile: Dockerfile.postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - PGDATA=/var/lib/postgresql/data
+      - POSTGRES_PASSWORD=microcuts1928
+      - POSTGRES_USER=daniilmolchanov

@@ -6,7 +6,7 @@ spring:
     enabled: true
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://127.0.0.1:5432
+    url: jdbc:postgresql://127.0.0.1:5432/cottonpads
     username: daniilmolchanov
     password: microcuts1928
   jpa:
@@ -23,6 +23,4 @@ telegram:
     name: Prozvetanie_Flower_Shop_bot
     token: 7091988555:AAHmFSmxmJKkyk8JB9cRAMfd0Z0YlIXo-uk
   webhook-path: localhost:8080
-server:
-  port:
-    8080
+
