@@ -323,6 +323,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 //                this.executeAsync(TextMessageSender.deleteMessage(update));
 //                return;
 //            }
+
             var u = userStateService.findAllByChatId(update.getMessage().getChatId()).getLast();
             var user = userService.findUser(update.getMessage().getChatId());
 
