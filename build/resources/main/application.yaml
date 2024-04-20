@@ -23,5 +23,5 @@ telegram:
   bot:
     name: Prozvetanie_Flower_Shop_bot
     token: 7091988555:AAFcBvGAlF8A8piWjlFaL_OGXV0wLpxD4yk
-  webhook-path: localhost:8000
+  webhook-path: localhost:8080
 
