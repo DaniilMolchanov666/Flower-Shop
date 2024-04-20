@@ -174,7 +174,7 @@
       <recent name="com.flowerShop.Flower_Shop" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Dockerfile">
+  <component name="RunManager" selected="Gradle.Flower_Shop [build]">
     <configuration name="FlowerShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flowerShop.Flower_Shop.FlowerShopApplication" />
       <module name="Flower_Shop.main" />
@@ -232,7 +232,7 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="Flower_Shop [compileJava]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="Flower_Shop [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -243,7 +243,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="compileJava" />
+            <option value="build" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -270,11 +270,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Flower_Shop [build]" />
         <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Application.FlowerShopApplication" />
         <item itemvalue="Gradle.Flower_Shop [buildDependents]" />
         <item itemvalue="Gradle.Flower_Shop [bootBuildImage]" />
-        <item itemvalue="Gradle.Flower_Shop [compileJava]" />
       </list>
     </recent_temporary>
   </component>
