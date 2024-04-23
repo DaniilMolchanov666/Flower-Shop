@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08f8633f-6c83-4549-93db-cf9dcc740cf4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="08f8633f-6c83-4549-93db-cf9dcc740cf4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -180,7 +178,7 @@
       <recent name="com.flowerShop.Flower_Shop" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Flower_Shop [build]">
+  <component name="RunManager" selected="Docker.Dockerfile">
     <configuration name="Flower_Shop [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -250,9 +248,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Gradle.Flower_Shop [build]" />
         <item itemvalue="Docker.Dockerfile (1)" />
-        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment (1)" />
         <item itemvalue="Docker.docker-compose.yaml: Compose Deployment" />
       </list>
