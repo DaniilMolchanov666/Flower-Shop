@@ -115,7 +115,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 sendChooseCategoryMenu(id);
                 break;
             case "BACK_START_BUTTON":
-                sendStartMenu(id);
+                sendStartMenu(update);
                 break;
             case "FORWARD_BUTTON", "BACKWARD_BUTTON":
                 if (lasViewedProductOfUser.isPresent()) {
@@ -301,9 +301,10 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         }
     }
 
-    public void sendStartMenu(long id) throws TelegramApiException {
+    public void sendStartMenu(Update update) throws TelegramApiException {
         String greeting = "Добро пожаловать! Что вас интересует?";
-        this.executeAsync(MultiContentMessageSender.sendMessage(id, greeting, MarkupCreator.getStartMenu()));
+        this.executeAsync(MultiContentMessageSender.sendMessage(update.getCallbackQuery().getFrom().getId(), greeting, MarkupCreator.getStartMenu()));
+        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
     }
 
     public void sendChooseCategoryMenu(long id) throws TelegramApiException {
@@ -314,7 +315,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
     public void checkTextMessagesFromUser(Update update) throws TelegramApiException {
         if (update.hasMessage() && update.getMessage().getText().equals("/start")) {
-            sendStartMenu(update.getMessage().getChatId());
+            sendStartMenu(update);
         } else if (update.hasMessage() && !update.getMessage().getText().equals("/start")) {
 
 //            if (userStateService.findAllByChatId(update.getMessage().getChatId()).isEmpty()) {
