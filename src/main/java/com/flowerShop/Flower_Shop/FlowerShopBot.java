@@ -100,9 +100,9 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         var shopUser = userService.findUser(id);
         UserState userState;
         Optional<Product> lasViewedProductOfUser = userStateService.getLasViewedProductOfUser(id);
+        int index = 0;
         switch (currentButton) {
             case "Цветы", "Монобукет", "Составной букет":
-                int index = 0;
                 if (productsService.findByCategory(currentButton).isEmpty()) {
                     setStateForUserAndSendProduct(update, Optional.empty(), UpdateState.FLOWERS.name());
                 } else {

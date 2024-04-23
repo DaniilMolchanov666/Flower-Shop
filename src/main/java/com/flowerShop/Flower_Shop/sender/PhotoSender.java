@@ -13,7 +13,7 @@ import java.io.File;
 //TODO сделать наследование, внедрить репозиторий продуктов
 public class PhotoSender {
 
-    private final static String PATH_FLOWERS = "src/main/resources/flowers/";
+    private final static String PATH_FLOWERS = "/media";
 
     public static SendPhoto sendMessage(Update update, Product product, InlineKeyboardMarkup inlineKeyboardMarkup) {
         long chatId = update.getCallbackQuery().getMessage().getChatId();

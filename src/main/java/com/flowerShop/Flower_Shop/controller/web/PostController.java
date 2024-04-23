@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.File;
+import java.nio.file.Paths;
+
 @Controller
 @RequiredArgsConstructor
 @Slf4j
@@ -56,7 +59,6 @@ public class PostController {
             redirectAttributes.addFlashAttribute("success",
                     String.format("Товар %s добавлен в базу данных!", newProduct.getName()));
             FileManager.createFileAndSaveInDirectory(file, newProduct.getName());
-
             productsService.save(newProduct);
             log.info("Товар {} добавлен в базу данных!", newProduct.getName());
         } else {

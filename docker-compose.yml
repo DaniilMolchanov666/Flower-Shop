@@ -1,0 +1,22 @@
+version: '1.29.2'
+services:
+  flower_shop:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - flowers
+  flowers:
+    restart: always
+    image: postgres:alpine3.19
+    environment:
+      - POSTGRES_DB=cottonpads
+      - POSTGRES_USER=daniilmolchanov
+      - POSTGRES_PASSWORD=microcuts1928
+    ports:
+      - 5440:5441
+
+
+
