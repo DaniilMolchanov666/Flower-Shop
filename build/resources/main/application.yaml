@@ -9,7 +9,7 @@ spring:
       max-file-size: 20MB
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://flowers:5432/cottonpads
+    url: jdbc:postgresql://dpg-coh7u16d3nmc73a0ui6g-a:5450/cottonpads
     username: daniilmolchanov
     password: microcuts1928
   jpa:
@@ -26,5 +26,4 @@ telegram:
   bot:
     name: Prozvetanie_Flower_Shop_bot
     token: 7091988555:AAFcBvGAlF8A8piWjlFaL_OGXV0wLpxD4yk
-#  webhook-path: localhost:8080
 
