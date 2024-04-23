@@ -212,6 +212,7 @@
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker2">
       <deployment type="dockerfile">
         <settings>
+          <option name="buildOnly" value="true" />
           <option name="containerName" value="" />
           <option name="sourceFilePath" value="Dockerfile" />
         </settings>
