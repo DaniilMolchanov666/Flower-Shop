@@ -1,0 +1,12 @@
+version: "1.29.2"
+services:
+  postgres:
+    image: postgres:alpine3.19
+    environment:
+      POSTGRES_DB: "cottonpads"
+      POSTGRES_USER: "daniilmolchanov"
+      POSTGRES_PASSWORD: "microcuts1928"
+    ports:
+      - "8000:5432"
+
+
