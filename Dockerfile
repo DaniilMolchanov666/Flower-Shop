@@ -1,5 +1,5 @@
 FROM openjdk:17
-ADD build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar flowershop.jar
+ADD build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar flowershop
 ARG JAR_FILE
 COPY ${JAR_FILE} Flower_Shop
 EXPOSE 8000
