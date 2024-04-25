@@ -7,5 +7,5 @@ services:
   plan: free
   region: oregon
   dockerContext: .
-  dockerfilePath: ./docker-compose.yaml
+  dockerfilePath: ./docker-compose.yml
 version: "1"
