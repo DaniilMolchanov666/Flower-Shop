@@ -1,0 +1,6 @@
+services:
+   - type: web
+     name: flower_shop
+     plan: free
+     runtime: docker
+     startCommand: docker-compose up
