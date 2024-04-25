@@ -3,4 +3,4 @@ services:
      name: flower_shop
      plan: free
      runtime: docker
-     startCommand: docker-compose up
+     buildCommand: docker-compose up
