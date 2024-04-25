@@ -1,6 +1,11 @@
+# Exported from Render on 2024-04-25T21:10:04Z
 services:
-   - type: web
-     name: flower_shop
-     plan: free
-     runtime: docker
-     buildCommand: docker-compose up
+- type: web
+  name: flower_shop
+  runtime: docker
+  repo: https://github.com/DaniilMolchanov666/Flower-Shop
+  plan: free
+  region: oregon
+  dockerContext: .
+  dockerfilePath: ./docker-compose.yaml
+version: "1"
