@@ -153,7 +153,7 @@ public class GetController {
                                           HttpServletResponse response,
                                           HttpServletRequest request) {
 
-        String PATH_FOR_FLOWERS = "/media";
+        String PATH_FOR_FLOWERS = "src/main/resources/flowers/";
         Path path = Paths.get(PATH_FOR_FLOWERS + name);
         byte[] file = null;
         try {

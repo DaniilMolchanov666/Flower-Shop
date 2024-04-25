@@ -93,7 +93,6 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         }
     }
 
-    //TODO добавить кнопку открытки и текст для нее
     public void buttonsCheck(Update update) throws TelegramApiException {
         String currentButton = update.getCallbackQuery().getData();
         long id = update.getCallbackQuery().getFrom().getId();
@@ -112,7 +111,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 }
                 break;
             case "CATEGORY_BUTTON", "BACK_CATEGORIES_BUTTON", "BACK_MENU_BUTTON":
-                sendChooseCategoryMenu(id);
+                sendChooseCategoryMenu(update);
                 break;
             case "BACK_START_BUTTON":
                 sendStartMenu(update);
@@ -140,7 +139,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     shopUser = userService.findUser(id);
                     shopUser.setListOfRequests(null);
                     userService.save(shopUser);
-                    sendChooseCategoryMenu(id);
+                    sendChooseCategoryMenu(update);
                     return;
                 }
                 getBucket(update, shopUser, lastProduct, id);
@@ -153,6 +152,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                         "\nВведите текст для открытки:";
                 setStateForUserAndSendProduct(update, lasViewedProductOfUser, UpdateState.LETTER_STATE.name());
                 this.executeAsync(TextMessageSender.sendInfo(id, letterMessage));
+                this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                 break;
             case "CONTINUE_BUTTON":
                 userState = userStateService.findAllByChatId(id).getLast();
@@ -303,14 +303,15 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
     public void sendStartMenu(Update update) throws TelegramApiException {
         String greeting = "Добро пожаловать! Что вас интересует?";
-        this.executeAsync(MultiContentMessageSender.sendMessage(update.getCallbackQuery().getFrom().getId(), greeting, MarkupCreator.getStartMenu()));
         this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+        this.executeAsync(MultiContentMessageSender.sendMessage(update.getMessage().getChatId(), greeting, MarkupCreator.getStartMenu()));
     }
 
-    public void sendChooseCategoryMenu(long id) throws TelegramApiException {
-        this.executeAsync(MultiContentMessageSender.sendMessage(id,
+    public void sendChooseCategoryMenu(Update update) throws TelegramApiException {
+        this.executeAsync(MultiContentMessageSender.sendMessage(update.getCallbackQuery().getMessage().getChatId(),
                 "Выберите категорию:",
                 MarkupCreator.getMarkupForCategoryMessage()));
+        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
     }
 
     public void checkTextMessagesFromUser(Update update) throws TelegramApiException {

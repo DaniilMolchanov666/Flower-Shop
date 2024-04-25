@@ -1,0 +1,24 @@
+[0;1;32m●[0m docker.service - Docker Application Container Engine
+     Loaded: loaded (]8;;file://CottonPads/lib/systemd/system/docker.service/lib/systemd/system/docker.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Thu 2024-04-25 19:23:41 MSK; 23min ago
+TriggeredBy: [0;1;32m●[0m docker.socket
+       Docs: ]8;;https://docs.docker.comhttps://docs.docker.com]8;;
+   Main PID: 2880 (dockerd)
+      Tasks: 33
+     Memory: 1.1G
+        CPU: 1min 14.769s
+     CGroup: /system.slice/docker.service
+             ├─[0;38;5;245m2880 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock[0m
+             ├─[0;38;5;245m4211 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 5440 -container-ip 172.20.0.2 -container-port 5441[0m
+             └─[0;38;5;245m4225 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 5440 -container-ip 172.20.0.2 -container-port 5441[0m
+
+апр 25 19:37:44 CottonPads dockerd[2880]: time="2024-04-25T19:37:44.432877022+03:00" level=warning msg="failed to close stdin: task 3bbca8b230ffaec21c693d079436c64353132b837d638531b500d3c7d6cb8854 not found: not found"
+апр 25 19:38:12 CottonPads dockerd[2880]: 2024/04/25 19:38:12 http2: server: error reading preface from client @: read unix /run/docker.sock->@: read: connection reset by peer
+апр 25 19:38:26 CottonPads dockerd[2880]: 2024/04/25 19:38:26 http: superfluous response.WriteHeader call from go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp.(*respWriterWrapper).WriteHeader (wrap.go:98)
+апр 25 19:38:31 CottonPads dockerd[2880]: time="2024-04-25T19:38:31.140376864+03:00" level=info msg="ignoring event" container=60fd141b3bf3445d322f410a494f81ce3e9ced3aaca8257043124943767f55d8 module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+апр 25 19:38:31 CottonPads dockerd[2880]: time="2024-04-25T19:38:31.153370683+03:00" level=warning msg="failed to close stdin: task 60fd141b3bf3445d322f410a494f81ce3e9ced3aaca8257043124943767f55d8 not found: not found"
+апр 25 19:39:42 CottonPads dockerd[2880]: 2024/04/25 19:39:42 http: superfluous response.WriteHeader call from go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp.(*respWriterWrapper).WriteHeader (wrap.go:98)
+апр 25 19:39:42 CottonPads dockerd[2880]: 2024/04/25 19:39:42 http: superfluous response.WriteHeader call from go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp.(*respWriterWrapper).WriteHeader (wrap.go:98)
+апр 25 19:39:50 CottonPads dockerd[2880]: 2024/04/25 19:39:50 http: superfluous response.WriteHeader call from go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp.(*respWriterWrapper).WriteHeader (wrap.go:98)
+апр 25 19:39:54 CottonPads dockerd[2880]: time="2024-04-25T19:39:54.486658010+03:00" level=info msg="ignoring event" container=68c9430c09664d33de5d7ed8a003dcd2d4c1d800ca81ea8c55584f29bfbec16b module=libcontainerd namespace=moby topic=/tasks/delete type="*events.TaskDelete"
+апр 25 19:39:54 CottonPads dockerd[2880]: time="2024-04-25T19:39:54.497769273+03:00" level=warning msg="failed to close stdin: task 68c9430c09664d33de5d7ed8a003dcd2d4c1d800ca81ea8c55584f29bfbec16b not found: not found"

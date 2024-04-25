@@ -16,7 +16,7 @@ services:
       - POSTGRES_USER=daniilmolchanov
       - POSTGRES_PASSWORD=microcuts1928
     ports:
-      - 5440:5441
+      - "5440:5441"
 
 
 
