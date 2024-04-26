@@ -1,6 +1,7 @@
-#version: '2'
+version: '3'
 services:
   flower_shop:
+    restart: always
     build:
       context: ./
       dockerfile: Dockerfile
@@ -16,7 +17,8 @@ services:
       - POSTGRES_USER=daniilmolchanov
       - POSTGRES_PASSWORD=microcuts1928
     ports:
-      - "5440:5441"
+      - "5442:5443"
+
 
 
 

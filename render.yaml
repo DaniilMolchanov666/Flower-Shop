@@ -6,6 +6,5 @@ services:
   repo: https://github.com/DaniilMolchanov666/Flower-Shop
   plan: free
   region: oregon
-  dockerContext: .
-  dockerfilePath: ./docker-compose.yml
+  startCommand: docker-compose run
 version: "1"
