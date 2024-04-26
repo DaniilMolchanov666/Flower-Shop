@@ -6,6 +6,6 @@ services:
     repo: https://github.com/DaniilMolchanov666/Flower-Shop
     plan: free
     region: oregon
-    dockerContext: .
-    dockerfilePath: ./docker-compose.yml
+    startCommand: gradle build && docker pull cottonpads/flower_shop-flower_shop:latest 
+      && docker run --network=host cottonpads/flower_shop-flower_shop:latest
 version: "1"
