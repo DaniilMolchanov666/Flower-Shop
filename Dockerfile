@@ -6,3 +6,8 @@ COPY ${JAR_FILE} Flower_Shop
 EXPOSE 5432
 COPY . .
 ENTRYPOINT ["java","-jar","flowershop.jar"]
+
+#FROM postgres:13.14-bullseye
+#CMD sudo su
+#CMD psql
+

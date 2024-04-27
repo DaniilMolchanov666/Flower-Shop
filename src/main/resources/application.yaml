@@ -9,9 +9,9 @@ spring:
       max-file-size: 20MB
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.211.132:5432/cottonpads
+    url: jdbc:postgresql://79.174.88.126:18568/cottonpads
     username: daniilmolchanov
-    password: microcuts1928
+    password: Microcuts_1928
   jpa:
     properties:
       hibernate:
