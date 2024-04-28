@@ -1,7 +1,6 @@
 package com.flowerShop.Flower_Shop.service.bot.user_state_service;
 
 import com.flowerShop.Flower_Shop.model.Product;
-import com.flowerShop.Flower_Shop.model.ShopUser;
 import com.flowerShop.Flower_Shop.model.UserState;
 import com.flowerShop.Flower_Shop.repository.ProductsRepository;
 import com.flowerShop.Flower_Shop.repository.UserStateRepository;

@@ -14,10 +14,21 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/controller/web/GetController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/controller/web/GetController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/PhotoSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/PhotoSender.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/web/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/web/FileManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/render.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/controller/web/GetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/controller/web/GetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/PhotoSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/PhotoSender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/web/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/web/FileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,7 +215,7 @@
       <recent name="com.flowerShop.Flower_Shop" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.Dockerfile">
+  <component name="RunManager" selected="Application.FlowerShopApplication">
     <configuration name="FlowerShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flowerShop.Flower_Shop.FlowerShopApplication" />
       <module name="Flower_Shop.main" />
@@ -284,9 +295,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Gradle.Flower_Shop [build]" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment (2)" />
+        <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Application.FlowerShopApplication" />
         <item itemvalue="Docker.Dockerfile 2" />
       </list>

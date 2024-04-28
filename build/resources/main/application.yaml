@@ -9,9 +9,9 @@ spring:
       max-file-size: 20MB
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://79.174.88.126:18568/cottonpads
+    url: jdbc:postgresql://flowers_db:5450/cottonpads
     username: daniilmolchanov
-    password: Microcuts_1928
+    password: microcuts1928
   jpa:
     properties:
       hibernate:
@@ -24,6 +24,8 @@ spring:
     change-log: classpath:db/changelog/changelog-master.yaml
 telegram:
   bot:
-    name: Prozvetanie_Flower_Shop_bot
+    name: Procvetanie_Shop_Bot
     token: 7091988555:AAFcBvGAlF8A8piWjlFaL_OGXV0wLpxD4yk
+port:
+  8080
 

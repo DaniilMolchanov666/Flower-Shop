@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 @Slf4j
 public class FileManager {
 
-    private static final String PATH_FOR_FLOWERS = "src/main/resources/flowers/";
+    private static final String PATH_FOR_FLOWERS = "./src/main/resources/flowers/";
 
     public static void deleteFile(String nameOfFile) {
         if (new File(PATH_FOR_FLOWERS + nameOfFile).exists()) {

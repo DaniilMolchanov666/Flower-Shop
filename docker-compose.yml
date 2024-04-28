@@ -8,8 +8,8 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - flowers
-  flowers:
+      - flowers_db
+  flowers_db:
     restart: always
     image: postgres:alpine3.19
     environment:
@@ -17,7 +17,7 @@ services:
       - POSTGRES_USER=daniilmolchanov
       - POSTGRES_PASSWORD=microcuts1928
     ports:
-      - "5442:5443"
+      - "5450:5443"
 
 
 
