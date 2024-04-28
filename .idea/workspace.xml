@@ -4,33 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08f8633f-6c83-4549-93db-cf9dcc740cf4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/controller/web/GetController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/controller/web/GetController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/PhotoSender.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/PhotoSender.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/web/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/web/FileManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/render.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/controller/web/GetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/controller/web/GetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/PhotoSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/PhotoSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/web/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/web/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="08f8633f-6c83-4549-93db-cf9dcc740cf4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -215,7 +189,7 @@
       <recent name="com.flowerShop.Flower_Shop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FlowerShopApplication">
+  <component name="RunManager" selected="Gradle.Flower_Shop [build]">
     <configuration name="FlowerShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flowerShop.Flower_Shop.FlowerShopApplication" />
       <module name="Flower_Shop.main" />
