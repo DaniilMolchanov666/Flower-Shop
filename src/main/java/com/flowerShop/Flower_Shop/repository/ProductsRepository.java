@@ -1,9 +1,7 @@
 package com.flowerShop.Flower_Shop.repository;
 
 import com.flowerShop.Flower_Shop.model.Product;
-import jakarta.validation.constraints.NotNull;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.lang.NonNullApi;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

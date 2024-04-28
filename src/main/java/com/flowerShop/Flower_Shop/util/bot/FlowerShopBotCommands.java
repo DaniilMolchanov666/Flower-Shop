@@ -8,6 +8,6 @@ import java.util.Map;
 public class FlowerShopBotCommands {
 
     public static final Map.Entry<String, String> START = Map.entry("/start",
-            "позволяет ознакомиться со всеми доступными на данный момент заказами");
+            "начать работу бота или перезагрузить его");
 
 }

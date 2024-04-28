@@ -27,5 +27,5 @@ telegram:
     name: Procvetanie_Shop_Bot
     token: 7091988555:AAFcBvGAlF8A8piWjlFaL_OGXV0wLpxD4yk
 port:
-  8080
+  8000
 

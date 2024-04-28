@@ -7,11 +7,19 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 
 public class MultiContentMessageSender {
 
-    public static SendMessage sendMessage(long idOfUpdate, String content, InlineKeyboardMarkup markup) {
-
+    public static SendMessage sendMessage(Update update, String content, InlineKeyboardMarkup markup) {
+        int messageId;
+        long chatId;
+        if (update.hasCallbackQuery()) {
+            messageId = update.getCallbackQuery().getMessage().getMessageId();
+            chatId = update.getCallbackQuery().getMessage().getChatId();
+        } else {
+            messageId = update.getMessage().getMessageId();
+            chatId = update.getMessage().getChatId();
+        }
         SendMessage sendMessage1 = new SendMessage();
         sendMessage1.setText(content);
-        sendMessage1.setChatId(idOfUpdate);
+        sendMessage1.setChatId(chatId);
         sendMessage1.setReplyMarkup(markup);
         return sendMessage1;
     }

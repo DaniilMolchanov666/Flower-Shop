@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Optional;
 
 @Slf4j
@@ -41,18 +41,18 @@ public class UserStateService {
         save(userState);
     }
 
-    public ArrayDeque<UserState> findAllByChatId(long id) {
-        return userStateRepository.findAllByChatId(id);
+    public UserState findByChatId(long id) {
+        return userStateRepository.findByChatId(id);
     }
 
     @Transactional(readOnly = true)
     public Optional<Product> getLasViewedProductOfUser(long chatId) {
-        var userState = userStateRepository.findAllByChatId(chatId);
+        var userState = userStateRepository.findByChatId(chatId);
 
-        if (!userState.isEmpty()
-                && userState.getLast().getLastViewedProduct() != null
-                && productsRepository.findById(Integer.valueOf(userState.getLast().getLastViewedProduct())).isPresent()) {
-            return Optional.of(productsRepository.findById(Integer.valueOf(userState.getLast().getLastViewedProduct())).get());
+        if (userState != null
+                && userState.getLastViewedProduct() != null
+                && productsRepository.findById(Integer.valueOf(userState.getLastViewedProduct())).isPresent()) {
+            return Optional.of(productsRepository.findById(Integer.valueOf(userState.getLastViewedProduct())).get());
         }
         return Optional.empty();
     }

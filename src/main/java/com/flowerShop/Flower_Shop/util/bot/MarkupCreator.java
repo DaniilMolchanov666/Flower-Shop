@@ -2,6 +2,7 @@ package com.flowerShop.Flower_Shop.util.bot;
 
 import com.flowerShop.Flower_Shop.model.Product;
 import com.vdurmont.emoji.EmojiParser;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
@@ -31,13 +32,18 @@ public class MarkupCreator {
         bucketButton.setText("Посмотреть корзину\n" + EmojiParser.parseToUnicode(":wastebasket:"));
         bucketButton.setCallbackData("BUCKET_BUTTON");
 
+        var backButton = new InlineKeyboardButton();
+        backButton.setText("Назад\n" + EmojiParser.parseToUnicode(":arrow_left:"));
+        backButton.setCallbackData("BACK_TO_START_BUTTON");
+
         List<InlineKeyboardButton> listOfButtonsForMove = new ArrayList<>(List.of(buttonFlowers));
         List<InlineKeyboardButton> listOfButtonsForRequest = new ArrayList<>(List.of(buttonBouquet));
-        List<InlineKeyboardButton> listOfButtonsForBack = new ArrayList<>(List.of(compositeBouquetButton));
+        List<InlineKeyboardButton> listOfButtonsForComposite = new ArrayList<>(List.of(compositeBouquetButton));
         List<InlineKeyboardButton> listOfButtonForShowAll = new ArrayList<>(List.of(bucketButton));
+        List<InlineKeyboardButton> listOfButtonsForBack = new ArrayList<>(List.of(backButton));
 
         List<List<InlineKeyboardButton>> listRows = new ArrayList<>(List.of(listOfButtonsForMove,
-                listOfButtonsForRequest, listOfButtonsForBack, listOfButtonForShowAll));
+                listOfButtonsForRequest, listOfButtonsForComposite, listOfButtonForShowAll, listOfButtonsForBack));
 
         inlineKeyboardMarkup.setKeyboard(listRows);
         return inlineKeyboardMarkup;
@@ -124,6 +130,7 @@ public class MarkupCreator {
         List<InlineKeyboardButton> listOfButtonsForUpdateName = new ArrayList<>();
         List<InlineKeyboardButton> listOfButtonsForUpdatePhoneNumber = new ArrayList<>();
         List<InlineKeyboardButton> listOfButtonsForRequest = new ArrayList<>();
+        List<InlineKeyboardButton> listOfButtonsForBack = new ArrayList<>();
 
         var buttonForName= new InlineKeyboardButton();
         buttonForName.setText("Поменять имя" + EmojiParser.parseToUnicode(":writing_hand:"));
@@ -137,13 +144,19 @@ public class MarkupCreator {
         requestButtonForRequest.setText("Да, все верно!" + EmojiParser.parseToUnicode(":v:"));
         requestButtonForRequest.setCallbackData("SEND_REQUEST_BUTTON");
 
+        var requestButtonForBack = new InlineKeyboardButton();
+        requestButtonForBack.setText("Назад" + EmojiParser.parseToUnicode(":arrow_backward:"));
+        requestButtonForBack.setCallbackData("BACK_CATEGORIES_BUTTON");
+
         listOfButtonsForUpdateName.add(buttonForName);
         listOfButtonsForUpdatePhoneNumber.add(buttonForPhone);
         listOfButtonsForRequest.add((requestButtonForRequest));
+        listOfButtonsForBack.add(requestButtonForBack);
 
         listRows.add(listOfButtonsForUpdateName);
         listRows.add(listOfButtonsForUpdatePhoneNumber);
         listRows.add(listOfButtonsForRequest);
+        listRows.add(listOfButtonsForBack);
 
         inlineKeyboardMarkup.setKeyboard(listRows);
         return inlineKeyboardMarkup;

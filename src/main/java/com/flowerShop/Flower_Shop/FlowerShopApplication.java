@@ -7,7 +7,6 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 @SpringBootApplication
-@EnableCaching
 public class FlowerShopApplication {
 
 	public static void main(String[] args) throws TelegramApiException {

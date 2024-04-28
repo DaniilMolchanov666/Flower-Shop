@@ -9,32 +9,30 @@ import com.flowerShop.Flower_Shop.sender.PhotoSender;
 import com.flowerShop.Flower_Shop.sender.TextMessageSender;
 import com.flowerShop.Flower_Shop.service.bot.user_service.UserServiceImpl;
 import com.flowerShop.Flower_Shop.service.bot.user_state_service.UserStateService;
-import com.flowerShop.Flower_Shop.util.bot.FlowerShopBotCommands;
 import com.flowerShop.Flower_Shop.service.web.ProductsServiceImpl;
-import com.flowerShop.Flower_Shop.util.bot.UpdateState;
+import com.flowerShop.Flower_Shop.util.bot.FlowerShopBotCommands;
 import com.flowerShop.Flower_Shop.util.bot.MarkupCreator;
+import com.flowerShop.Flower_Shop.util.bot.UpdateState;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.annotation.EnableCaching;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
-import org.telegram.telegrambots.meta.api.objects.*;
+import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
+import org.telegram.telegrambots.meta.api.objects.Message;
+import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
 import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiRequestException;
 
 import java.util.*;
-import java.util.List;
 import java.util.stream.Collectors;
 
-//TODO настроить кэш для вывода фотографий в боте
 @Slf4j
 @SpringBootApplication
-@EnableCaching
 public class FlowerShopBot extends TelegramLongPollingBot {
 
     FlowerShopBotConfig flowerShopBotConfig;
@@ -51,16 +49,6 @@ public class FlowerShopBot extends TelegramLongPollingBot {
     private static final long id_admin1 = 1402556700L;
 
     private static final long id_admin2 = 6831132148L;
-
-    @Override
-    public void onClosing() {
-        super.onClosing();
-    }
-
-    @Override
-    public void clearWebhook() throws TelegramApiRequestException {
-            super.clearWebhook();
-    }
 
     @SuppressWarnings("deprecation")
     public FlowerShopBot(FlowerShopBotConfig config) {
@@ -113,7 +101,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
             case "CATEGORY_BUTTON", "BACK_CATEGORIES_BUTTON", "BACK_MENU_BUTTON":
                 sendChooseCategoryMenu(update);
                 break;
-            case "BACK_START_BUTTON":
+            case "BACK_START_BUTTON", "BACK_TO_START_BUTTON":
                 sendStartMenu(update);
                 break;
             case "FORWARD_BUTTON", "BACKWARD_BUTTON":
@@ -148,14 +136,14 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 getBucket(update, shopUser, Optional.empty(), id);
                 break;
             case "LETTER_BUTTON":
-                String letterMessage = "Для каждого заказа мы бесплатно добавляем открытки с вашим текстом." +
+                this.executeAsync(TextMessageSender.deleteMessage(update));
+                String letterMessage = "Для каждого заказа мы бесплатно добавляем открытки с вашим текстом!" +
                         "\nВведите текст для открытки:";
-                setStateForUserAndSendProduct(update, lasViewedProductOfUser, UpdateState.LETTER_STATE.name());
+                userStateService.setState(id, lasViewedProductOfUser, UpdateState.LETTER_STATE.name());
                 this.executeAsync(TextMessageSender.sendInfo(id, letterMessage));
-                this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                 break;
             case "CONTINUE_BUTTON":
-                userState = userStateService.findAllByChatId(id).getLast();
+                userState = userStateService.findByChatId(id);
                 var product1 = productsService
                         .findById(Integer.parseInt(userState.getLastViewedProduct()))
                         .orElse(null);
@@ -163,34 +151,31 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 break;
             case "END_REQUEST_BUTTON":
                 if (shopUser.getName() != null && shopUser.getNumberOfPhone() != null) {
-                    sendSuggestionToCheckData(shopUser);
+                    this.executeAsync(TextMessageSender.deleteMessage(update));
+                    sendSuggestionToCheckData(shopUser, update);
                 } else {
                     userStateService.setState(id, Optional.empty(), UpdateState.NAME_REQUEST.name());
                     this.executeAsync(TextMessageSender.sendInfo(id, "Укажите как к вам обращаться:"));
                     this.executeAsync(PhotoSender.deleteMessage(update));
-                    checkTextMessagesFromUser(update);
                 }
                 break;
             case "UPDATE_NAME_BUTTON":
                 userStateService.setState(id, Optional.empty(), UpdateState.UPDATE_NAME.name());
                 this.executeAsync(TextMessageSender.sendInfo(id, "Укажите как к вам обращаться:"));
-                this.executeAsync(PhotoSender.deleteMessage(update));
-                checkTextMessagesFromUser(update);
+                this.executeAsync(TextMessageSender.deleteMessage(update));
                 break;
             case "UPDATE_PHONE_BUTTON":
                 userStateService.setState(id, Optional.empty(), UpdateState.UPDATE_PHONE.name());
                 this.executeAsync(TextMessageSender.sendInfo(id, "Укажите свой номер телефона:"));
-                this.executeAsync(PhotoSender.deleteMessage(update));
-                checkTextMessagesFromUser(update);
+                this.executeAsync(TextMessageSender.deleteMessage(update));
                 break;
             case "SEND_REQUEST_BUTTON":
                 userStateService.setState(id, Optional.empty(), UpdateState.SUCCESS_STATE.name());
                 sendRequestForAdmin(shopUser, update);
                 break;
             case "HELP_BUTTON":
-                String helpMessage = "По всем вопросам можете обращаться к ...";
-                this.executeAsync(MultiContentMessageSender.sendMessage(id,
-                        helpMessage, MarkupCreator.getBackButton()));
+                String helpMessage = "По всем вопросам можете обращаться к флористам студии @Procvetanie_Shop";
+                this.executeAsync(MultiContentMessageSender.sendMessage(update, helpMessage, MarkupCreator.getBackButton()));
                 this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                 break;
             default:
@@ -227,13 +212,12 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
                     if (listOfProductsExcludeDeleted.isEmpty()) {
                         message.append("Ваша корзина пуста!");
-                        this.executeAsync(MultiContentMessageSender.sendMessage(id, message.toString(),
-                                MarkupCreator.getBackMenuButton()));
+                        this.executeAsync(MultiContentMessageSender.sendMessage(update, message.toString(), MarkupCreator.getBackMenuButton()));
                         this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                     } else {
                         message.append("Ваша корзина:\n");
                         this.executeAsync(MultiContentMessageSender
-                                .sendMessage(id, message.toString(),
+                                .sendMessage(update, message.toString(),
                                         MarkupCreator.getButtonsForALlRequestsInBucket(listOfProductsExcludeDeleted)));
                         this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                     }
@@ -266,12 +250,12 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         userService.save(userOfBot);
 
         if (listOfRequests.isEmpty()) {
-            this.executeAsync(MultiContentMessageSender.sendMessage(id, message.append("Ваша корзина пуста!").toString(),
+            this.executeAsync(MultiContentMessageSender.sendMessage(update, message.append("Ваша корзина пуста!").toString(),
                     MarkupCreator.getBackMenuButton()));
             this.executeAsync(MultiContentMessageSender.deleteMessage(update));
         } else {
             this.executeAsync(MultiContentMessageSender
-                    .sendMessage(id, message.append("Ваша корзина:\n").toString(),
+                    .sendMessage(update, message.append("Ваша корзина:\n").toString(),
                             MarkupCreator.getButtonsForALlRequestsInBucket(listOfRequests)));
             this.executeAsync(MultiContentMessageSender.deleteMessage(update));
         }
@@ -294,8 +278,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
             userStateService.setState(id, product, state);
         } else {
-            this.executeAsync(MultiContentMessageSender.sendMessage(id,
-                    "К сожалению, на данный момент товары отсутствуют!",
+            this.executeAsync(MultiContentMessageSender.sendMessage(update, "К сожалению, на данный момент товары отсутствуют!",
                     MarkupCreator.getBackMenuButton()));
             this.executeAsync(PhotoSender.deleteMessage(update));
         }
@@ -303,13 +286,12 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
     public void sendStartMenu(Update update) throws TelegramApiException {
         String greeting = "Добро пожаловать! Что вас интересует?";
+        this.executeAsync(MultiContentMessageSender.sendMessage(update, greeting, MarkupCreator.getStartMenu()));
         this.executeAsync(MultiContentMessageSender.deleteMessage(update));
-        this.executeAsync(MultiContentMessageSender.sendMessage(update.getMessage().getChatId(), greeting, MarkupCreator.getStartMenu()));
     }
 
     public void sendChooseCategoryMenu(Update update) throws TelegramApiException {
-        this.executeAsync(MultiContentMessageSender.sendMessage(update.getCallbackQuery().getMessage().getChatId(),
-                "Выберите категорию:",
+        this.executeAsync(MultiContentMessageSender.sendMessage(update, "Выберите категорию:",
                 MarkupCreator.getMarkupForCategoryMessage()));
         this.executeAsync(MultiContentMessageSender.deleteMessage(update));
     }
@@ -318,15 +300,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().getText().equals("/start")) {
             sendStartMenu(update);
         } else if (update.hasMessage() && !update.getMessage().getText().equals("/start")) {
-
-//            if (userStateService.findAllByChatId(update.getMessage().getChatId()).isEmpty()) {
-//                String errorMessage = "Для начала работы введите /start";
-//                this.executeAsync(TextMessageSender.sendInfo(update.getMessage().getChatId(), errorMessage));
-//                this.executeAsync(TextMessageSender.deleteMessage(update));
-//                return;
-//            }
-
-            var u = userStateService.findAllByChatId(update.getMessage().getChatId()).getLast();
+            var u = userStateService.findByChatId(update.getMessage().getChatId());
             var user = userService.findUser(update.getMessage().getChatId());
 
             String state = u.getBotState();
@@ -345,14 +319,14 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     u.setBotState(UpdateState.CHECK_STATE.name());
                     userService.save(user);
                     userStateService.save(u);
-                    sendSuggestionToCheckData(user);
+                    sendSuggestionToCheckData(user, update);
                     break;
                 case ("UPDATE_NAME"):
                     user.setName(update.getMessage().getText());
                     u.setBotState(UpdateState.CHECK_STATE.name());
                     userService.save(user);
                     userStateService.save(u);
-                    sendSuggestionToCheckData(user);
+                    sendSuggestionToCheckData(user, update);
                     break;
                 case ("LETTER_STATE"):
                     user.setPostcardText(update.getMessage().getText());
@@ -363,11 +337,10 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         }
     }
 
-    public void sendSuggestionToCheckData(ShopUser user) throws TelegramApiException {
+    public void sendSuggestionToCheckData(ShopUser user, Update update) throws TelegramApiException {
         String checkSuggest = "Пожалуйста, проверьте ваши данные:\n\n"
                 + "Имя: " + user.getName() + "\n\n" + "Номер телефона: " + user.getNumberOfPhone();
-        this.executeAsync(MultiContentMessageSender.sendMessage(user.getChatId(), checkSuggest,
-                MarkupCreator.getMarkupForCheckDataOfUserMenu()));
+        this.executeAsync(MultiContentMessageSender.sendMessage(update, checkSuggest, MarkupCreator.getMarkupForCheckDataOfUserMenu()));
     }
 
     public void sendRequestForAdmin(ShopUser user, Update update) throws TelegramApiException {
@@ -393,14 +366,14 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                          Ник в телеграм: %s
 
                          Номер телефона: %s
-                       
+                        
                          Текст открытки: %s
 
                          %s""",
                 user.getName(), fullName, userName, user.getNumberOfPhone(), user.getPostcardText(), user.getListOfRequests());
 
         this.execute(TextMessageSender.sendInfo(id_admin1, contentForRequest));
-//        this.execute(TextMessageSender.sendInfo(id_admin2, contentForRequest));
+        this.execute(TextMessageSender.sendInfo(id_admin2, contentForRequest));
         user.setListOfRequests("");
         userStateService.setState(chatId, Optional.empty(), UpdateState.SUCCESS_STATE.name());
         userService.save(user);

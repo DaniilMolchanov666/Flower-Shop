@@ -4,6 +4,8 @@ import com.flowerShop.Flower_Shop.model.Product;
 import com.flowerShop.Flower_Shop.repository.ProductsRepository;
 import lombok.RequiredArgsConstructor;
 import org.jvnet.hk2.annotations.Service;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;

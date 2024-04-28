@@ -9,5 +9,4 @@ public interface UsersRepository extends JpaRepository<ShopUser, Long> {
 
     ShopUser findByChatId(Long id);
 
-
 }
