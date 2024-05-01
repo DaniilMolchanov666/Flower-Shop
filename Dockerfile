@@ -1,5 +1,6 @@
 FROM openjdk:17
-WORKDIR ./scr
+FROM gradle:latest
+WORKDIR . .
 ADD build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar flowershop.jar
 ARG JAR_FILE
 COPY ${JAR_FILE} Flower_Shop
