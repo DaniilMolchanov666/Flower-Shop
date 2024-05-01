@@ -20,8 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
-import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
-import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
@@ -137,8 +135,8 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 break;
             case "LETTER_BUTTON":
                 this.executeAsync(TextMessageSender.deleteMessage(update));
-                String letterMessage = "Для каждого заказа мы бесплатно добавляем открытки с вашим текстом!" +
-                        "\nВведите текст для открытки:";
+                String letterMessage = "Мы считаем, что добрые слова греют душу не меньше цветов, именно поэтому мы дарим открытку к любому заказу.\n" +
+                        "Текст теплого послания можно оставить ниже";
                 userStateService.setState(id, lasViewedProductOfUser, UpdateState.LETTER_STATE.name());
                 this.executeAsync(TextMessageSender.sendInfo(id, letterMessage));
                 break;
@@ -174,7 +172,8 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 sendRequestForAdmin(shopUser, update);
                 break;
             case "HELP_BUTTON":
-                String helpMessage = "По всем вопросам можете обращаться к флористам студии @Procvetanie_Shop";
+                String helpMessage = "Если у Вас возник вопрос или Вы хотите уточнить/дополнить информацию по Вашему заказу, " +
+                        "то @Procvetanie_Shop с удовольствием Вам помогут";
                 this.executeAsync(MultiContentMessageSender.sendMessage(update, helpMessage, MarkupCreator.getBackButton()));
                 this.executeAsync(MultiContentMessageSender.deleteMessage(update));
                 break;
@@ -278,7 +277,8 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
             userStateService.setState(id, product, state);
         } else {
-            this.executeAsync(MultiContentMessageSender.sendMessage(update, "К сожалению, на данный момент товары отсутствуют!",
+            this.executeAsync(MultiContentMessageSender.sendMessage(update, "К сожалению, товар раскупили. " +
+                            "Узнать о ближайшем поступлении можно в чате с флористом @Procvetanie_Shop",
                     MarkupCreator.getBackMenuButton()));
             this.executeAsync(PhotoSender.deleteMessage(update));
         }
@@ -338,43 +338,69 @@ public class FlowerShopBot extends TelegramLongPollingBot {
     }
 
     public void sendSuggestionToCheckData(ShopUser user, Update update) throws TelegramApiException {
-        String checkSuggest = "Пожалуйста, проверьте ваши данные:\n\n"
-                + "Имя: " + user.getName() + "\n\n" + "Номер телефона: " + user.getNumberOfPhone();
-        this.executeAsync(MultiContentMessageSender.sendMessage(update, checkSuggest, MarkupCreator.getMarkupForCheckDataOfUserMenu()));
+        List<Optional<Product>> productList = Arrays.stream(user.getListOfRequests().split(", "))
+                .map(i -> productsService.findProduct(i))
+                .collect(Collectors.toList());
+        productList.removeIf(Optional::isEmpty);
+        String checkSuggest = "Пожалуйста, проверьте ваши данные:\n\n" +
+                "Имя: " + user.getName() + "\n\n" + "Номер телефона: " + user.getNumberOfPhone() + "\n"
+                + "\nТекст открытки: "
+                + (Objects.isNull(user.getPostcardText()) ? "Без текста" : user.getPostcardText())
+                + "\n\nВаш заказ:\n"
+                + productList.stream()
+                .map(i -> i.map(product -> String.format("%s - %s р.",
+                                product.getName(), product.getPrice()))
+                        .orElse(""))
+                .collect(Collectors.joining("\n"))
+                + "\n\nОбщая сумма:\n"
+                + productList.stream().mapToInt(i -> i.map(product -> Integer.parseInt(product.getPrice())).orElse(0)).sum() + "р.";
+        this.executeAsync(MultiContentMessageSender.sendMessage(update, checkSuggest,
+                MarkupCreator.getMarkupForCheckDataOfUserMenu()));
     }
 
     public void sendRequestForAdmin(ShopUser user, Update update) throws TelegramApiException {
-        String content = "Готово! Информация о вашем заказе передана администрации нашего магазина, ожидайте"
-                + " обратной связи!";
+        String content = """
+                Готово! Информация о Вашем заказе передана флористам студии. \
+                В ближайшее время с Вами свяжется администратор магазина для подтверждения заказа и уточнения деталей.
+
+                Пожалуйста, ожидайте обратной связи\uD83E\uDEF6\uD83C\uDFFB \
+                Благодарим Вас за доверие к нашему салону❤\uFE0F""";
         long chatId = update.getCallbackQuery().getFrom().getId();
         this.executeAsync(TextMessageSender.sendInfo(chatId, content));
 
         User userFromTg = update.getCallbackQuery().getFrom();
 
         String fullName = userFromTg.getLastName() != null ? userFromTg.getFirstName() + " " + userFromTg.getLastName() :
-                "Нет информации";
+                userFromTg.getFirstName();
         String userName = userFromTg.getUserName() != null ? "@" + userFromTg.getUserName() : "Нет информации";
 
         String contentForRequest = String.format("""
                         Новый заказ!
 
-                         Имя клиента:\
-                         %s
+                        Имя клиента:\
+                        %s
 
-                         ФИО: %s
+                        ФИО: %s
 
-                         Ник в телеграм: %s
+                        Ник в телеграм: %s
 
-                         Номер телефона: %s
-                        
-                         Текст открытки: %s
+                        Номер телефона: %s
+                                                
+                        Текст открытки: %s
 
-                         %s""",
-                user.getName(), fullName, userName, user.getNumberOfPhone(), user.getPostcardText(), user.getListOfRequests());
+                        %s""",
+                user.getName(),
+                fullName,
+                userName,
+                user.getNumberOfPhone(),
+                Objects.isNull(user.getPostcardText()) ? "Без текста" : user.getPostcardText(),
+                Optional.of(user.getListOfRequests()).orElse("Без заказа"));
 
         this.execute(TextMessageSender.sendInfo(id_admin1, contentForRequest));
         this.execute(TextMessageSender.sendInfo(id_admin2, contentForRequest));
+
         user.setListOfRequests("");
+
         userStateService.setState(chatId, Optional.empty(), UpdateState.SUCCESS_STATE.name());
         userService.save(user);
     }

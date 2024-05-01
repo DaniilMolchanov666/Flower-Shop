@@ -17,11 +17,11 @@ public class MarkupCreator {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
 
         var buttonFlowers = new InlineKeyboardButton();
-        buttonFlowers.setText("Цветы\n" + EmojiParser.parseToUnicode(":hibiscus:"));
+        buttonFlowers.setText("Цветы\n" + EmojiParser.parseToUnicode(":tulip:"));
         buttonFlowers.setCallbackData("Цветы");
 
         var buttonBouquet = new InlineKeyboardButton();
-        buttonBouquet.setText("Монобукет\n" + EmojiParser.parseToUnicode(":ribbon:"));
+        buttonBouquet.setText("Монобукет\n" + EmojiParser.parseToUnicode(":hibiscus:"));
         buttonBouquet.setCallbackData("Монобукет");
 
         var compositeBouquetButton = new InlineKeyboardButton();
@@ -29,7 +29,7 @@ public class MarkupCreator {
         compositeBouquetButton.setCallbackData("Составной букет");
 
         var bucketButton = new InlineKeyboardButton();
-        bucketButton.setText("Посмотреть корзину\n" + EmojiParser.parseToUnicode(":wastebasket:"));
+        bucketButton.setText("Просмотреть корзину\n" + EmojiParser.parseToUnicode(":shopping_trolley:"));
         bucketButton.setCallbackData("BUCKET_BUTTON");
 
         var backButton = new InlineKeyboardButton();
@@ -240,11 +240,11 @@ public class MarkupCreator {
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
 
         var categoryButton= new InlineKeyboardButton();
-        categoryButton.setText("Посмотреть товары ");
+        categoryButton.setText("Просмотреть товары ");
         categoryButton.setCallbackData("CATEGORY_BUTTON");
 
         var helpButton= new InlineKeyboardButton();
-        helpButton.setText("Связь с продавцом ");
+        helpButton.setText("Связь с магазином");
         helpButton.setCallbackData("HELP_BUTTON");
 
         List<InlineKeyboardButton> firstRowList =

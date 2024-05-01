@@ -8,19 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/FlowerShopApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/FlowerShopApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/FlowerShopBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/FlowerShopBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/ProductsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/ProductsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/UserStateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/UserStateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/UsersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/MultiContentMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/MultiContentMessageSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/TextMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/TextMessageSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/web/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/web/ProductsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/FlowerShopBotCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/FlowerShopBotCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/MarkupCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/MarkupCreator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
     </list>
@@ -144,53 +135,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Docker.Docker Image (1).executor": "Run",
-    "Docker.Docker Image (2).executor": "Run",
-    "Docker.Docker Image.executor": "Run",
-    "Docker.Dockerfile (1).executor": "Run",
-    "Docker.Dockerfile 2 (1).executor": "Run",
-    "Docker.Dockerfile 2.executor": "Run",
-    "Docker.Dockerfile.executor": "Run",
-    "Docker.Dockerfile2.executor": "Run",
-    "Docker.docker-compose.yaml: Compose Deployment (1).executor": "Run",
-    "Docker.docker-compose.yaml: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.db: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.flower_shop: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.flower_shop_db: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.flowers: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml.todo-app: Compose Deployment.executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment (1).executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment (2).executor": "Run",
-    "Docker.docker-compose.yml: Compose Deployment.executor": "Run",
-    "Docker.render.yaml: Compose Deployment.executor": "Run",
-    "Gradle./home/daniilmolchanov/Рабочий стол/Flower_Shop [dependencies].executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.Flower_Shop [:FlowerShopApplication.main()].executor": "Run",
-    "Gradle.Flower_Shop [:FlowerShopBot.main()].executor": "Run",
-    "Gradle.Flower_Shop [bootBuildImage].executor": "Run",
-    "Gradle.Flower_Shop [bootJar].executor": "Run",
-    "Gradle.Flower_Shop [bootRun].executor": "Run",
-    "Gradle.Flower_Shop [buildDependents].executor": "Run",
-    "Gradle.Flower_Shop [build].executor": "Run",
-    "Gradle.Flower_Shop [clean].executor": "Run",
-    "Gradle.Flower_Shop [compileJava].executor": "Run",
-    "Gradle.Flower_Shop [init].executor": "Run",
-    "Gradle.Flower_Shop [jar].executor": "Run",
-    "Gradle.Flower_Shop [wrapper].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/daniilmolchanov/Рабочий стол/Flower_Shop",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.57020056",
-    "service.view.auto.scroll.to.source": "true",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.grazie"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Docker.Docker Image (1).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Docker Image (2).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Docker Image.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Dockerfile (1).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Dockerfile 2 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Dockerfile 2.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.Dockerfile2.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml: Compose Deployment (1).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.db: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.flower_shop: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.flower_shop_db: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.flowers: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml.todo-app: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment (1).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment (2).executor&quot;: &quot;Run&quot;,
+    &quot;Docker.docker-compose.yml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Docker.render.yaml: Compose Deployment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle./home/daniilmolchanov/Рабочий стол/Flower_Shop [dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [:FlowerShopApplication.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [:FlowerShopBot.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [bootBuildImage].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [bootJar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [bootRun].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [compileJava].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [init].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [jar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Flower_Shop [wrapper].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/daniilmolchanov/Рабочий стол/Flower_Shop&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.57020056&quot;,
+    &quot;service.view.auto.scroll.to.source&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.grazie&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -208,7 +199,7 @@
       <recent name="com.flowerShop.Flower_Shop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FlowerShopApplication">
+  <component name="RunManager" selected="Gradle.Flower_Shop [build]">
     <configuration name="FlowerShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.flowerShop.Flower_Shop.FlowerShopApplication" />
       <module name="Flower_Shop.main" />
@@ -255,6 +246,7 @@
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker3">
       <deployment type="dockerfile">
         <settings>
+          <option name="buildOnly" value="true" />
           <option name="sourceFilePath" value="Dockerfile" />
         </settings>
       </deployment>
