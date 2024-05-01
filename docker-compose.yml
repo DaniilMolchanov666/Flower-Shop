@@ -6,7 +6,7 @@ services:
       context: ./
       dockerfile: Dockerfile
     volumes:
-      - flowers:/src/main/resources/flowers
+      - /root/var/lib/docker/volumes/flowers:/src/main/resources/flowers
     ports:
       - "8080:8080"
     depends_on:

@@ -1,5 +1,4 @@
 FROM openjdk:17
-FROM gradle:latest
 WORKDIR . .
 ADD build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar flowershop.jar
 ARG JAR_FILE
