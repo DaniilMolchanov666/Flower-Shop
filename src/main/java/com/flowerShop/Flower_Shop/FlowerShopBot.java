@@ -1,29 +1,26 @@
 package com.flowerShop.Flower_Shop;
 
-import com.flowerShop.Flower_Shop.config.FlowerShopBotConfig;
 import com.flowerShop.Flower_Shop.model.Product;
 import com.flowerShop.Flower_Shop.model.ShopUser;
 import com.flowerShop.Flower_Shop.model.UserState;
+import com.flowerShop.Flower_Shop.sender.DeleteMessageUpdate;
 import com.flowerShop.Flower_Shop.sender.MultiContentMessageSender;
 import com.flowerShop.Flower_Shop.sender.PhotoSender;
 import com.flowerShop.Flower_Shop.sender.TextMessageSender;
 import com.flowerShop.Flower_Shop.service.bot.user_service.UserServiceImpl;
 import com.flowerShop.Flower_Shop.service.bot.user_state_service.UserStateService;
 import com.flowerShop.Flower_Shop.service.web.ProductsServiceImpl;
-import com.flowerShop.Flower_Shop.util.bot.FlowerShopBotCommands;
-import com.flowerShop.Flower_Shop.util.bot.MarkupCreator;
 import com.flowerShop.Flower_Shop.util.bot.UpdateState;
+import com.flowerShop.Flower_Shop.util.bot.markups.*;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.User;
-import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
-import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.util.*;
@@ -33,7 +30,7 @@ import java.util.stream.Collectors;
 @SpringBootApplication
 public class FlowerShopBot extends TelegramLongPollingBot {
 
-    FlowerShopBotConfig flowerShopBotConfig;
+    String botUserName;
 
     @Autowired
     ProductsServiceImpl productsService;
@@ -48,20 +45,10 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
     private static final long id_admin2 = 6831132148L;
 
-    @SuppressWarnings("deprecation")
-    public FlowerShopBot(FlowerShopBotConfig config) {
-
-        this.flowerShopBotConfig = config;
-
-        List<BotCommand> listOfCommand = new ArrayList<>();
-
-        listOfCommand.add(new BotCommand(FlowerShopBotCommands.START.getKey(),
-                FlowerShopBotCommands.START.getValue()));
-        try {
-            this.execute(new SetMyCommands(listOfCommand, new BotCommandScopeDefault(), null));
-        } catch (TelegramApiException e) {
-            log.error("Commands of bot error!");
-        }
+    public FlowerShopBot(@Value("${telegram.bot.token}") String botToken,
+                         @Value("{telegram.bot.name") String botUserName) {
+        super(botToken);
+        this.botUserName = botUserName;
     }
 
     @SneakyThrows
@@ -128,13 +115,13 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     sendChooseCategoryMenu(update);
                     return;
                 }
-                getBucket(update, shopUser, lastProduct, id);
+                getBucket(update, shopUser, lastProduct);
                 break;
             case "BACK_TO_BUCKET_BUTTON", "BUCKET_BUTTON":
-                getBucket(update, shopUser, Optional.empty(), id);
+                getBucket(update, shopUser, Optional.empty());
                 break;
             case "LETTER_BUTTON":
-                this.executeAsync(TextMessageSender.deleteMessage(update));
+                this.executeAsync(DeleteMessageUpdate.delete(update));
                 String letterMessage = "Мы считаем, что добрые слова греют душу не меньше цветов, именно поэтому мы дарим открытку к любому заказу.\n" +
                         "Текст теплого послания можно оставить ниже";
                 userStateService.setState(id, lasViewedProductOfUser, UpdateState.LETTER_STATE.name());
@@ -149,23 +136,23 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 break;
             case "END_REQUEST_BUTTON":
                 if (shopUser.getName() != null && shopUser.getNumberOfPhone() != null) {
-                    this.executeAsync(TextMessageSender.deleteMessage(update));
+                    this.executeAsync(DeleteMessageUpdate.delete(update));
                     sendSuggestionToCheckData(shopUser, update);
                 } else {
                     userStateService.setState(id, Optional.empty(), UpdateState.NAME_REQUEST.name());
                     this.executeAsync(TextMessageSender.sendInfo(id, "Укажите как к вам обращаться:"));
-                    this.executeAsync(PhotoSender.deleteMessage(update));
+                    this.executeAsync(DeleteMessageUpdate.delete(update));
                 }
                 break;
             case "UPDATE_NAME_BUTTON":
                 userStateService.setState(id, Optional.empty(), UpdateState.UPDATE_NAME.name());
                 this.executeAsync(TextMessageSender.sendInfo(id, "Укажите как к вам обращаться:"));
-                this.executeAsync(TextMessageSender.deleteMessage(update));
+                this.executeAsync(DeleteMessageUpdate.delete(update));
                 break;
             case "UPDATE_PHONE_BUTTON":
                 userStateService.setState(id, Optional.empty(), UpdateState.UPDATE_PHONE.name());
                 this.executeAsync(TextMessageSender.sendInfo(id, "Укажите свой номер телефона:"));
-                this.executeAsync(TextMessageSender.deleteMessage(update));
+                this.executeAsync(DeleteMessageUpdate.delete(update));
                 break;
             case "SEND_REQUEST_BUTTON":
                 userStateService.setState(id, Optional.empty(), UpdateState.SUCCESS_STATE.name());
@@ -174,8 +161,9 @@ public class FlowerShopBot extends TelegramLongPollingBot {
             case "HELP_BUTTON":
                 String helpMessage = "Если у Вас возник вопрос или Вы хотите уточнить/дополнить информацию по Вашему заказу, " +
                         "то @Procvetanie_Shop с удовольствием Вам помогут";
-                this.executeAsync(MultiContentMessageSender.sendMessage(update, helpMessage, MarkupCreator.getBackButton()));
-                this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                this.executeAsync(MultiContentMessageSender.sendMessage(update, helpMessage,
+                        new BackStartButtonMarkup().createMarkup()));
+                this.executeAsync(DeleteMessageUpdate.delete(update));
                 break;
             default:
                 StringBuilder message = new StringBuilder();
@@ -183,17 +171,17 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     Optional<Product> currentProduct = productsService.findProduct(currentButton);
                     if (currentProduct.isPresent()) {
                         this.executeAsync(PhotoSender.sendMessage(update, currentProduct.get(),
-                                MarkupCreator.getDeleteProductMenu(currentProduct)));
-                        this.executeAsync(PhotoSender.deleteMessage(update));
+                                new DeleteMenuMarkup(currentProduct).createMarkup()));
+                        this.executeAsync(DeleteMessageUpdate.delete(update));
                     } else {
-                        getBucket(update, shopUser, Optional.empty(), id);
+                        getBucket(update, shopUser, Optional.empty());
                     }
                 } else {
                     String pressedProductName = StringUtils.removeStart(currentButton, "DELETE_BUTTON");
                     Optional<Product> currentProduct = productsService.findProduct(pressedProductName);
 
                     List<Product> listOfProductsExcludeDeleted = new LinkedList<>(Arrays.stream(shopUser.getListOfRequests()
-                                    .split(", "))
+                                    .split("\n"))
                             .map(i -> productsService.findProduct(i).orElse(null))
                             .toList());
 
@@ -206,32 +194,32 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
                     shopUser.setListOfRequests(listOfProductsExcludeDeleted.stream()
                             .map(Product::getName)
-                            .collect(Collectors.joining(", ")));
+                            .collect(Collectors.joining("\n")));
                     userService.save(shopUser);
 
                     if (listOfProductsExcludeDeleted.isEmpty()) {
                         message.append("Ваша корзина пуста!");
-                        this.executeAsync(MultiContentMessageSender.sendMessage(update, message.toString(), MarkupCreator.getBackMenuButton()));
-                        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                        this.executeAsync(MultiContentMessageSender.sendMessage(update, message.toString(),
+                                new BackMenuButtonMarkup().createMarkup()));
                     } else {
                         message.append("Ваша корзина:\n");
                         this.executeAsync(MultiContentMessageSender
                                 .sendMessage(update, message.toString(),
-                                        MarkupCreator.getButtonsForALlRequestsInBucket(listOfProductsExcludeDeleted)));
-                        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                                        new AllRequestsMenuMarkup(listOfProductsExcludeDeleted).createMarkup()));
                     }
+                    this.executeAsync(DeleteMessageUpdate.delete(update));
                 }
                 break;
         }
     }
 
-    private void getBucket(Update update, ShopUser userOfBot, Optional<Product> lastProduct, long id) throws TelegramApiException {
+    private void getBucket(Update update, ShopUser userOfBot, Optional<Product> lastProduct) throws TelegramApiException {
 
         String emptyStringForFirstRequest = "";
         StringBuilder message = new StringBuilder();
         String requests = userOfBot.getListOfRequests() != null ? userOfBot.getListOfRequests() : emptyStringForFirstRequest;
 
-        List<Product> listOfRequests = new LinkedList<>(Arrays.stream(requests.split(", "))
+        List<Product> listOfRequests = new LinkedList<>(Arrays.stream(requests.split("\n"))
                 .dropWhile(String::isEmpty)
                 .map(i -> productsService.findProduct(i).orElse(null))
                 .toList());
@@ -245,18 +233,18 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
         userOfBot.setListOfRequests(listOfRequests.stream()
                 .map(Product::getName)
-                .collect(Collectors.joining(", ")));
+                .collect(Collectors.joining("\n")));
         userService.save(userOfBot);
 
         if (listOfRequests.isEmpty()) {
             this.executeAsync(MultiContentMessageSender.sendMessage(update, message.append("Ваша корзина пуста!").toString(),
-                    MarkupCreator.getBackMenuButton()));
-            this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                    new BackMenuButtonMarkup().createMarkup()));
+            this.executeAsync(DeleteMessageUpdate.delete(update));
         } else {
             this.executeAsync(MultiContentMessageSender
                     .sendMessage(update, message.append("Ваша корзина:\n").toString(),
-                            MarkupCreator.getButtonsForALlRequestsInBucket(listOfRequests)));
-            this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                                new AllRequestsMenuMarkup(listOfRequests).createMarkup()));
+            this.executeAsync(DeleteMessageUpdate.delete(update));
         }
     }
 
@@ -264,36 +252,44 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         long id = update.getCallbackQuery().getFrom().getId();
         if (product.isPresent()) {
             var list = productsService.findByCategory(product.get().getCategory());
-            var photoSender = PhotoSender.sendMessage(update, product.get(), MarkupCreator.getMarkupForMainMenu());
+            var photoSender = PhotoSender.sendMessage(update, product.get(),
+                    new PhotoMenuMarkup().createMarkup());
 
-            String numberOfProduct = "%s\n\n( %d из %d )\n\n%s".formatted(photoSender.getCaption(),
-                    list.indexOf(product.get()) + 1, list.size(),
+            String numberOfProduct = String.format("""
+                            %s
+                            
+                            ( %d из %d )
+                            
+                            %s""",
+                    photoSender.getCaption(),
+                    list.indexOf(product.get()) + 1,
+                    list.size(),
                     product.get().getDescription());
 
             photoSender.setCaption(numberOfProduct);
 
             this.executeAsync(photoSender);
-            this.executeAsync(PhotoSender.deleteMessage(update));
+            this.executeAsync(DeleteMessageUpdate.delete(update));
 
             userStateService.setState(id, product, state);
         } else {
             this.executeAsync(MultiContentMessageSender.sendMessage(update, "К сожалению, товар раскупили. " +
                             "Узнать о ближайшем поступлении можно в чате с флористом @Procvetanie_Shop",
-                    MarkupCreator.getBackMenuButton()));
-            this.executeAsync(PhotoSender.deleteMessage(update));
+                    new BackMenuButtonMarkup().createMarkup()));
+            this.executeAsync(DeleteMessageUpdate.delete(update));
         }
     }
 
     public void sendStartMenu(Update update) throws TelegramApiException {
         String greeting = "Добро пожаловать! Что вас интересует?";
-        this.executeAsync(MultiContentMessageSender.sendMessage(update, greeting, MarkupCreator.getStartMenu()));
-        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+        this.executeAsync(MultiContentMessageSender.sendMessage(update, greeting, new StartMenuMarkup().createMarkup()));
+        this.executeAsync(DeleteMessageUpdate.delete(update));
     }
 
     public void sendChooseCategoryMenu(Update update) throws TelegramApiException {
         this.executeAsync(MultiContentMessageSender.sendMessage(update, "Выберите категорию:",
-                MarkupCreator.getMarkupForCategoryMessage()));
-        this.executeAsync(MultiContentMessageSender.deleteMessage(update));
+                new CategoryMenuMarkup().createMarkup()));
+        this.executeAsync(DeleteMessageUpdate.delete(update));
     }
 
     public void checkTextMessagesFromUser(Update update) throws TelegramApiException {
@@ -331,31 +327,35 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 case ("LETTER_STATE"):
                     user.setPostcardText(update.getMessage().getText());
                     userService.save(user);
-                    getBucket(update, user, Optional.empty(), update.getMessage().getChatId());
+                    getBucket(update, user, Optional.empty());
                     break;
             }
         }
     }
 
     public void sendSuggestionToCheckData(ShopUser user, Update update) throws TelegramApiException {
-        List<Optional<Product>> productList = Arrays.stream(user.getListOfRequests().split(", "))
-                .map(i -> productsService.findProduct(i))
-                .collect(Collectors.toList());
-        productList.removeIf(Optional::isEmpty);
-        String checkSuggest = "Пожалуйста, проверьте ваши данные:\n\n" +
-                "Имя: " + user.getName() + "\n\n" + "Номер телефона: " + user.getNumberOfPhone() + "\n"
-                + "\nТекст открытки: "
-                + (Objects.isNull(user.getPostcardText()) ? "Без текста" : user.getPostcardText())
-                + "\n\nВаш заказ:\n"
-                + productList.stream()
-                .map(i -> i.map(product -> String.format("%s - %s р.",
-                                product.getName(), product.getPrice()))
-                        .orElse(""))
-                .collect(Collectors.joining("\n"))
-                + "\n\nОбщая сумма:\n"
-                + productList.stream().mapToInt(i -> i.map(product -> Integer.parseInt(product.getPrice())).orElse(0)).sum() + "р.";
+
+        String postcardText = user.getPostcardText() == null ? "Без текста" : user.getPostcardText();
+
+        String checkSuggest = String.format("""
+                        Пожалуйста, проверьте Ваши данные:
+                        
+                        Имя: %s
+                        Номер телефона: %s
+                        
+                        Текст открытки: %s
+                        
+                        Ваш заказ:
+                        
+                        %s
+                        """,
+                user.getName(),
+                user.getNumberOfPhone(),
+                postcardText,
+                getRequestsText(user));
+
         this.executeAsync(MultiContentMessageSender.sendMessage(update, checkSuggest,
-                MarkupCreator.getMarkupForCheckDataOfUserMenu()));
+                new CheckMenuMarkup().createMarkup()));
     }
 
     public void sendRequestForAdmin(ShopUser user, Update update) throws TelegramApiException {
@@ -364,7 +364,8 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 В ближайшее время с Вами свяжется администратор магазина для подтверждения заказа и уточнения деталей.
 
                 Пожалуйста, ожидайте обратной связи\uD83E\uDEF6\uD83C\uDFFB \
-                Благодарим Вас за доверие к нашему салону❤\uFE0F""";
+                Благодарим Вас за доверие к нашему салону❤️""";
+
         long chatId = update.getCallbackQuery().getFrom().getId();
         this.executeAsync(TextMessageSender.sendInfo(chatId, content));
 
@@ -377,24 +378,23 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         String contentForRequest = String.format("""
                         Новый заказ!
 
-                        Имя клиента:\
-                        %s
-
+                        Имя клиента: %s
                         ФИО: %s
-
                         Ник в телеграм: %s
-
                         Номер телефона: %s
-                                                
+                        
                         Текст открытки: %s
-
-                        %s""",
+                        
+                        Заказ:
+                        
+                        %s
+                        """,
                 user.getName(),
                 fullName,
                 userName,
                 user.getNumberOfPhone(),
-                Objects.isNull(user.getPostcardText()) ? "Без текста" : user.getPostcardText(),
-                Optional.of(user.getListOfRequests()).orElse("Без заказа"));
+                user.getPostcardText() == null ? "Без текста" : user.getPostcardText(),
+                getRequestsText(user));
 
         this.execute(TextMessageSender.sendInfo(id_admin1, contentForRequest));
         this.execute(TextMessageSender.sendInfo(id_admin2, contentForRequest));
@@ -405,19 +405,31 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         userService.save(user);
     }
 
+    public String getRequestsText(ShopUser user) {
+        List<Product> productList = Arrays.stream(user.getListOfRequests().split("\n"))
+                .map(i -> productsService.findProduct(i).orElse(null))
+                .filter(Objects::nonNull)
+                .toList();
+
+        String listOfRequests = productList.stream()
+                .map(i -> "%s - %s р.".formatted(i.getName(), i.getPrice()))
+                .collect(Collectors.joining("\n"));
+
+        String sumOfRequestsPrices = productList.stream()
+                .mapToInt(i -> Integer.parseInt(i.getPrice()))
+                .sum() + "р.";
+
+        return String.format("""
+                        %s
+                      
+                        Общая сумма: %s
+                        
+                        """,
+                listOfRequests, sumOfRequestsPrices);
+    }
+
     @Override
     public String getBotUsername() {
-        return flowerShopBotConfig.getNameOfBot();
-    }
-
-    @Override
-    public void onRegister() {
-        super.onRegister();
-    }
-
-    @SuppressWarnings("deprecation")
-    @Override
-    public String getBotToken() {
-        return flowerShopBotConfig.getTokenToAccess();
+        return botUserName;
     }
 }

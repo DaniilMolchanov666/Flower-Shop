@@ -10,7 +10,7 @@ import org.mapstruct.*;
         uses = {Product.class, ProductCreateDTO.class},
         nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE,
         componentModel = MappingConstants.ComponentModel.SPRING,
-        unmappedTargetPolicy = ReportingPolicy.WARN
+        unmappedTargetPolicy = ReportingPolicy.IGNORE
 )
 public abstract class ProductDTOMapper {
 

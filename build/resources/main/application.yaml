@@ -6,10 +6,10 @@ spring:
     enabled: true
   servlet:
     multipart:
-      max-file-size: 20MB
+      max-file-size: 50MB
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://89.104.68.91:5432/cottonpads
+    url: jdbc:postgresql://flowers_db:5432/cottonpads
     username: daniilmolchanov
     password: microcuts1928
   jpa:
