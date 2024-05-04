@@ -342,7 +342,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                         
                         Имя: %s
                         Номер телефона: %s
-                        
+
                         Текст открытки: %s
                         
                         Ваш заказ:
