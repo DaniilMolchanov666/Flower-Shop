@@ -11,7 +11,7 @@ import java.io.File;
 
 public class PhotoSender {
 
-    private final static String PATH_FLOWERS = "./flowers";
+    private final static String PATH_FLOWERS = "./flowers/";
 
     public static SendPhoto sendMessage(Update update, Product product, InlineKeyboardMarkup inlineKeyboardMarkup) {
         long chatId = update.getCallbackQuery().getMessage().getChatId();
