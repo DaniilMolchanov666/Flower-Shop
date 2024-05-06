@@ -24,6 +24,8 @@ repositories {
 
 dependencies {
 
+	implementation("io.minio:minio:8.5.10")
+
 	implementation("org.ehcache:ehcache:3.10.8")
 	implementation("net.sf.ehcache:ehcache-core:2.6.11")
 	implementation("com.googlecode.ehcache-spring-annotations:ehcache-spring-annotations:1.2.0")

@@ -28,4 +28,11 @@ telegram:
     token: 6996412649:AAEjERQih6LGvG4R17oAqEvEKiZbtgMPXqA
 port:
   9000
+minio:
+  url: minio
+  accessKey: minioadmin
+  secretKey: minioadmin
+  bucket-name: flowers
+  secure: false
+
 

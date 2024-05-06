@@ -5,6 +5,7 @@ import com.flowerShop.Flower_Shop.dto.productDTO.ProductUpdateDTO;
 import com.flowerShop.Flower_Shop.mapper.ProductDTOMapper;
 import com.flowerShop.Flower_Shop.model.Product;
 import com.flowerShop.Flower_Shop.service.web.ProductsService;
+import com.flowerShop.Flower_Shop.util.minio.MinioBucketProvider;
 import com.flowerShop.Flower_Shop.util.web.FileManager;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 
 @Controller
@@ -35,11 +37,14 @@ public class PostController {
     @Autowired
     private ProductDTOMapper productDTOMapper;
 
+    @Autowired
+    private MinioBucketProvider minioBucketProvider;
+
     @PostMapping("/api/products/create")
     public String addNewProduct(@Valid ProductCreateDTO productCreateDTO,
                                 BindingResult bindingResult,
                                 @RequestParam MultipartFile file,
-                                RedirectAttributes redirectAttributes) {
+                                RedirectAttributes redirectAttributes) throws IOException {
         if (file.isEmpty()) {
             productCreateDTO.setNameOfPhoto("без фото.jpg");
         } else {
@@ -59,6 +64,7 @@ public class PostController {
             redirectAttributes.addFlashAttribute("success",
                     String.format("Товар %s добавлен в базу данных!", newProduct.getName()));
             FileManager.createFileAndSaveInDirectory(file, newProduct.getName());
+            minioBucketProvider.addFileInBucket(file.getBytes(), newProduct.getName());
             productsService.save(newProduct);
             log.info("Товар {} добавлен в базу данных!", newProduct.getName());
         } else {
@@ -75,6 +81,7 @@ public class PostController {
                                 RedirectAttributes redirectAttributes) {
         productsService.deleteProduct(name);
         FileManager.deleteFile(name);
+        minioBucketProvider.deleteFileFromBucket(name);
         redirectAttributes.addFlashAttribute("success",
                 String.format("Товар %s успешно удален!", name));
         log.info("Товар {} удален из базы данных!", name);
@@ -108,12 +115,13 @@ public class PostController {
 
         if (file.isEmpty()) {
             product.setNameOfPhoto("без фото.jpg");
+            minioBucketProvider.deleteFileFromBucket(nameOfProduct);
         } else {
             product.setNameOfPhoto(productUpdateDTO.getName());
+            minioBucketProvider.addFileInBucket(file.getBytes(), productUpdateDTO.getName());
         }
 
         FileManager.deleteOldFileAndSaveNew(file, nameOfProduct, productUpdateDTO.getName());
-
         productsService.save(product);
 
         redirectAttributes.addFlashAttribute("success",

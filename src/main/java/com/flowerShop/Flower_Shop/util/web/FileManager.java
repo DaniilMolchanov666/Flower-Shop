@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 @Slf4j
 public class FileManager {
 
-    private static final String PATH_FOR_FLOWERS = "./flowers";
+    private static final String PATH_FOR_FLOWERS = "./flowers/";
 
     public static void deleteFile(String nameOfFile) {
         if (new File(PATH_FOR_FLOWERS + nameOfFile).exists()) {
@@ -43,13 +43,7 @@ public class FileManager {
 
     public static void deleteOldFileAndSaveNew(MultipartFile newFile, String oldName, String newName) {
         if (newFile != null) {
-            if (new File(PATH_FOR_FLOWERS + oldName).exists()) {
-                try {
-                    Files.delete(Paths.get(PATH_FOR_FLOWERS + oldName));
-                } catch (IOException e) {
-                    log.error("Вам не удалось удалить файл {} => {}", oldName, e.getMessage());
-                }
-            }
+            deleteFile(oldName);
             createFileAndSaveInDirectory(newFile, newName);
         }
     }
