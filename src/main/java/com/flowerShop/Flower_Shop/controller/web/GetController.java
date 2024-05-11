@@ -35,10 +35,10 @@ public class GetController {
     @Autowired
     private ProductDTOMapper productDTOMapper;
 
-    private final List<Integer> listOfSizes = new ArrayList<>(List.of(10, 25, 50));
+    private final List<Integer> listOfSizes = new ArrayList<>(List.of(10, 15, 25));
 
     private final List<String> listOfCategories =
-            new ArrayList<>(List.of("Цветы", "Монобукет", "Составной букет", "Другое"));
+            new ArrayList<>(List.of("Цветы", "Монобукет", "Композиция", "Составной букет", "Другое"));
 
     @GetMapping("/api/products")
     @ResponseStatus(HttpStatus.OK)
@@ -50,6 +50,7 @@ public class GetController {
                                   String category,
                                   @RequestParam(value = "orderBy", required = false, defaultValue = "price")
                                   String orderBy,
+                                  @RequestParam(value = "name", required = false) String name,
                                   Model model, RedirectAttributes redirectAttributes) {
 
         if (!redirectAttributes.getFlashAttributes().isEmpty()) {
@@ -63,6 +64,12 @@ public class GetController {
                             .findByCategory(category));
         } else {
             listOfProducts.addAll(productsService.findAll());
+        }
+
+        if (name != null) {
+            listOfProducts = listOfProducts.stream()
+                    .filter(i -> i.getName().trim().contains(name))
+                    .toList();
         }
 
         List<ProductShowDTO> listForSHow = new ArrayList<>();
@@ -100,25 +107,9 @@ public class GetController {
         return "show";
     }
 
-    @GetMapping("/api/products/find")
-    public String showCurrentProduct(@RequestParam(value = "name") String name, Model model) {
-        List<ProductShowDTO> listForSHow = new ArrayList<>();
-        List<Product> list;
-        if (!name.isEmpty()) {
-            list = productsService.findAll().stream()
-                    .filter(i -> i.getName().toLowerCase().trim().contains(name))
-                    .toList();
-        } else {
-            list = productsService.findAll();
-        }
-
-        list.forEach(i -> listForSHow.add(productDTOMapper.toProductShowDTO(i)));
-        model.addAttribute("listOfProducts", listForSHow);
-        return "show";
-    }
-
     @GetMapping("api/products/create")
-    public String createNewProduct() {
+    public String createNewProduct(RedirectAttributes redirectAttributes) {
+
         return "create";
     }
 
@@ -129,7 +120,9 @@ public class GetController {
     }
 
     @GetMapping("/api/products/update/{name}")
-    public String chooseProductForEdit(@PathVariable String name, RedirectAttributes redirectAttributes, Model model) {
+    public String chooseProductForEdit(@PathVariable String name,
+                                       RedirectAttributes redirectAttributes,
+                                       Model model) {
         if (productsService.findProduct(name).isEmpty()) {
             redirectAttributes.addFlashAttribute("error",
                     "Товар '" + name + "' был удален!");

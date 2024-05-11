@@ -16,9 +16,13 @@ public class CategoryMenuMarkup implements KeyboardMarkupCreator{
         buttonBouquet.setText("Монобукет\n" + EmojiParser.parseToUnicode(":hibiscus:"));
         buttonBouquet.setCallbackData("Монобукет");
 
-        var compositeBouquetButton = new InlineKeyboardButton();
-        compositeBouquetButton.setText("Составной букет\n" + EmojiParser.parseToUnicode(":bouquet:"));
-        compositeBouquetButton.setCallbackData("Составной букет");
+        var compositionBouquetButton = new InlineKeyboardButton();
+        compositionBouquetButton.setText("Составной букет\n" + EmojiParser.parseToUnicode(":bouquet:"));
+        compositionBouquetButton.setCallbackData("Составной букет");
+
+        var boxBouquetButton = new InlineKeyboardButton();
+        boxBouquetButton.setText("Композиция\n" + EmojiParser.parseToUnicode("\uD83E\uDDFA"));
+        boxBouquetButton.setCallbackData("Композиция");
 
         var bucketButton = new InlineKeyboardButton();
         bucketButton.setText("Просмотреть корзину\n" + EmojiParser.parseToUnicode(":shopping_trolley:"));
@@ -31,7 +35,8 @@ public class CategoryMenuMarkup implements KeyboardMarkupCreator{
         return new MarkupBuilder()
                 .addButton(buttonFlowers).createRow()
                 .addButton(buttonBouquet).createRow()
-                .addButton(compositeBouquetButton).createRow()
+                .addButton(boxBouquetButton).createRow()
+                .addButton(compositionBouquetButton).createRow()
                 .addButton(bucketButton).createRow()
                 .addButton(backButton).createRow()
                 .buildKeyboardMarkup();

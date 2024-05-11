@@ -17,7 +17,7 @@
     <h1> База данных магазина "Процветание" </h1>
     <div class="alert alert-success" role="alert" th:text="${success}" th:if="${success}" size="50"></div>
     <div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}" size="50"></div>
-    <form action="/api/products/find" method="get">
+    <form action="/api/products" method="get">
         <div class="btn-group">
             <label>
                 <p1>
@@ -42,6 +42,7 @@
             <option selected value="all">Все</option>
             <option value="Цветы">Цветы</option>
             <option value="Монобукет">Монобукет</option>
+            <option value="Композиция">Композиция</option>
             <option value="Составной букет">Составной букет</option>
             <option value="Другое">Другое</option>
         </select>

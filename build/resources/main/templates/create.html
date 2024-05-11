@@ -13,9 +13,7 @@
 </div>
 <body>
 <div class="container mt-5 mb-3">
-    <header>
-        <h1>Создание нового товара</h1>
-    </header>
+    <h1>Создание товара</h1>
     <tbody th:each="error: ${errors}">
     <tr>
         <td>
@@ -24,26 +22,37 @@
     </tr>
     </tbody>
     <form action="/api/products/create" method="POST" enctype="multipart/form-data">
-        <input type="text" name="name" required placeholder="Название товара" class="form-control"><br>
-        <label for="categories">Категория товара:</label>
+        <p1>Название товара</p1>
+        <input type="text" th:value="${name}" name="name" placeholder="Название товара" class="form-control"><br>
+        <label>Категория товара:</label>
         <select name="category" id="categories">
+            <option selected th:value="${category}">
+                <p1 th:text="${category}"></p1>
+            </option>
             <option value="Цветы">Цветы</option>
             <option value="Монобукет">Монобукет</option>
+            <option value="Композиция">Композиция</option>
             <option value="Составной букет">Составной букет</option>
             <option value="Другое">Другое</option>
         </select>
-        <input type="text" name="description" placeholder="Описание или комментарий к товару" class="form-control"><br>
-        <input type="text" name="price" required placeholder="Цена товара" class="form-control"><br>
-        <input type="text" name="purchasePrice" placeholder="Закупочная цена товара" class="form-control"><br>
+        <br>
+        <p1>Описание товара</p1>
+        </br>
+        <input type="text" th:value="${description}" name="description" placeholder="Описание или комментарий к товару"
+               class="form-control"><br>
+        <p1>Цена товара</p1>
+        <input type="text" th:value="${price}" name="price" placeholder="Цена товара" class="form-control"><br>
+        <p1>Закупочная цена товара</p1>
+        <input type="text" th:value="${purchase_price}" name="purchasePrice" placeholder="Цена товара"
+               class="form-control"><br>
         <p1>Изображение товара (размер файла не более 50 Мб)</p1>
         <input class="form-control" name="file" type="file" id="file"
                placeholder="Загрузите изобржание для товара" multiple><br>
         <footer>
-            <button type="submit" class="btn btn-primary">Добавить товар</button>
+            <button type="submit" class="btn btn-primary">Создать товар</button>
             <a class="btn btn-secondary" href="/api/products" role="button">Назад</a>
         </footer>
     </form>
 </div>
 </body>
-</br>
 </html>

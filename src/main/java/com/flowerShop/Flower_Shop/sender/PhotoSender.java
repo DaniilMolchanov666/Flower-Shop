@@ -26,5 +26,7 @@ public class PhotoSender {
         sendMessage.setPhoto(new InputFile(new File(PATH_FLOWERS + product.getNameOfPhoto())));
         return sendMessage;
 
+
+
     }
 }

@@ -26,6 +26,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+//TODO добавить возможность скрывать букеты от пользователей бота
 @Slf4j
 @SpringBootApplication
 public class FlowerShopBot extends TelegramLongPollingBot {
@@ -74,7 +75,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         Optional<Product> lasViewedProductOfUser = userStateService.getLasViewedProductOfUser(id);
         int index = 0;
         switch (currentButton) {
-            case "Цветы", "Монобукет", "Составной букет":
+            case "Цветы", "Монобукет", "Составной букет", "Композиция":
                 if (productsService.findByCategory(currentButton).isEmpty()) {
                     setStateForUserAndSendProduct(update, Optional.empty(), UpdateState.FLOWERS.name());
                 } else {
@@ -422,7 +423,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
         return String.format("""
                         %s
                       
-                        Общая сумма: %s
+                        Общая сумма (без учета стоимости доставки): %s
                         
                         """,
                 listOfRequests, sumOfRequestsPrices);
