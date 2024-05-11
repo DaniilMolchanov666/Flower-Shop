@@ -85,7 +85,7 @@ public class PostController {
         if (!productsService.findAll().contains(newProduct)) {
             redirectAttributes.addFlashAttribute("success",
                     String.format("Товар '%s' добавлен в базу данных!", newProduct.getName()));
-            FileManager.createFileAndSaveInDirectory(file, newProduct.getName());
+            FileManager.createFileAndSaveInDirectory(file.getBytes(), newProduct.getName());
             minioBucketProvider.addFileInBucket(file.getBytes(), newProduct.getName());
             productsService.save(newProduct);
             log.info("Товар {} добавлен в базу данных!", newProduct.getName());
@@ -136,13 +136,19 @@ public class PostController {
 
         productDTOMapper.update(productUpdateDTO, product);
 
+        product.setNameOfPhoto(productUpdateDTO.getName());
+
         if (!file.isEmpty()) {
-            FileManager.deleteOldFileAndSaveNew(file, nameOfProduct, productUpdateDTO.getName());
-            product.setNameOfPhoto(productUpdateDTO.getName());
+            minioBucketProvider.deleteFileFromBucket(nameOfProduct);
             minioBucketProvider.addFileInBucket(file.getBytes(), productUpdateDTO.getName());
+            FileManager.deleteOldFileAndSaveNew(file.getBytes(), nameOfProduct, productUpdateDTO.getName());
+        } else {
+            minioBucketProvider.updateFileFromBucket(nameOfProduct, productUpdateDTO.getName());
+            FileManager.renameFile(nameOfProduct, productUpdateDTO.getName());
         }
 
         productsService.save(product);
+
         redirectAttributes.addFlashAttribute("success",
                 String.format("Товар '%s' был обновлен!", product.getName()));
         log.info("Товар {} обновлен в базе данных!", product.getName());

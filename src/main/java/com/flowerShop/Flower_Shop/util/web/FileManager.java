@@ -1,7 +1,6 @@
 package com.flowerShop.Flower_Shop.util.web;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -9,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Objects;
 
 @Slf4j
 public class FileManager {
@@ -25,13 +25,12 @@ public class FileManager {
         }
     }
 
-    public static void createFileAndSaveInDirectory(MultipartFile file, String name) {
-        if (!file.isEmpty()) {
+    public static void createFileAndSaveInDirectory(byte[] file, String name) {
+        if (file.length > 0) {
             try {
-                byte[] bytes = file.getBytes();
                 BufferedOutputStream stream =
                         new BufferedOutputStream(new FileOutputStream(PATH_FOR_FLOWERS + name));
-                stream.write(bytes);
+                stream.write(file);
                 stream.close();
             } catch (Exception e) {
                 log.error("Вам не удалось загрузить файл {} => {}", name, e.getMessage());
@@ -41,10 +40,23 @@ public class FileManager {
         }
     }
 
-    public static void deleteOldFileAndSaveNew(MultipartFile newFile, String oldName, String newName) {
+    public static void deleteOldFileAndSaveNew(byte[] newFile, String oldName, String newName) {
         if (newFile != null) {
             deleteFile(oldName);
             createFileAndSaveInDirectory(newFile, newName);
+        }
+    }
+
+    public static void renameFile(String oldName, String newName) {
+        if (new File(PATH_FOR_FLOWERS + oldName).exists()) {
+            try {
+                if (!Objects.equals(oldName, newName)) {
+                    createFileAndSaveInDirectory(Files.readAllBytes(Paths.get(PATH_FOR_FLOWERS + oldName)), newName);
+                    deleteFile(oldName);
+                }
+            } catch (IOException e) {
+                log.error("Вам не удалось обновить файл {} ({})", oldName, e.getMessage());
+            }
         }
     }
 }

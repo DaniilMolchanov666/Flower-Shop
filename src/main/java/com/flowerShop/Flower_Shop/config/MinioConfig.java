@@ -57,6 +57,13 @@ public class MinioConfig {
                             .filename("./flowers/" + r.get().objectName())
                             .build());
         }
+
+        minioClient.uploadObject(
+                UploadObjectArgs.builder()
+                        .bucket("flowers")
+                        .object("без фото.jpg")
+                        .filename("./flowers/без фото.jpg")
+                        .build());
         return minioClient;
     }
 }
