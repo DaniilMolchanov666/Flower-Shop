@@ -23,7 +23,7 @@ public class DeleteMenuMarkup implements KeyboardMarkupCreator{
     public InlineKeyboardMarkup createMarkup() {
         var buttonForDelete = new InlineKeyboardButton();
         buttonForDelete.setText("Удалить из корзины" + EmojiParser.parseToUnicode(":scissors:"));
-        buttonForDelete.setCallbackData("DELETE_BUTTON" + this.product.map(Product::getName).orElse(""));
+        buttonForDelete.setCallbackData("DELETE_BUTTON" + this.product.map(Product::getId).orElse(null));
 
         var buttonForBack = new InlineKeyboardButton();
         buttonForBack.setText("Вернуться в корзину" + EmojiParser.parseToUnicode(":arrow_left:"));

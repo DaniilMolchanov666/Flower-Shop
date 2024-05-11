@@ -136,15 +136,17 @@ public class PostController {
 
         productDTOMapper.update(productUpdateDTO, product);
 
-        product.setNameOfPhoto(productUpdateDTO.getName());
+        if (!product.getNameOfPhoto().equals("без фото.jpg")) {
+            product.setNameOfPhoto(productUpdateDTO.getName());
+        }
 
         if (!file.isEmpty()) {
             minioBucketProvider.deleteFileFromBucket(nameOfProduct);
-            minioBucketProvider.addFileInBucket(file.getBytes(), productUpdateDTO.getName());
-            FileManager.deleteOldFileAndSaveNew(file.getBytes(), nameOfProduct, productUpdateDTO.getName());
+            minioBucketProvider.addFileInBucket(file.getBytes(), product.getNameOfPhoto());
+            FileManager.deleteOldFileAndSaveNew(file.getBytes(), nameOfProduct, product.getNameOfPhoto());
         } else {
-            minioBucketProvider.updateFileFromBucket(nameOfProduct, productUpdateDTO.getName());
-            FileManager.renameFile(nameOfProduct, productUpdateDTO.getName());
+            minioBucketProvider.updateFileFromBucket(nameOfProduct, product.getNameOfPhoto());
+            FileManager.renameFile(nameOfProduct, product.getNameOfPhoto());
         }
 
         productsService.save(product);

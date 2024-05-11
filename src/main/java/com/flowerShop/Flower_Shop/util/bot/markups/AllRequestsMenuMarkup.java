@@ -21,7 +21,7 @@ public class    AllRequestsMenuMarkup implements KeyboardMarkupCreator{
         for (Product product : productList) {
             var buttonForName = new InlineKeyboardButton();
             buttonForName.setText(product.getName() + " : " + product.getPrice() + " р.");
-            buttonForName.setCallbackData(product.getName());
+            buttonForName.setCallbackData(String.valueOf(product.getId()));
             markup.addButton(buttonForName).createRow();
         }
 

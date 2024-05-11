@@ -1,7 +1,7 @@
 databaseChangeLog:
 
   - changeSet:
-      id: 13
+      id: 14
       author: cottonpads
       preConditions:
         - onFail: MARK_RAN
@@ -22,11 +22,11 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: category_of_product
-                  type: text
+                  type: varchar(50)
                   remarks: Название категории товара
               - column:
                   name: name
-                  type: varchar(50)
+                  type: text
               - column:
                   name: description
                   type: text
@@ -39,9 +39,9 @@ databaseChangeLog:
                   remarks: Закупочная цена
               - column:
                   name: name_of_photo
-                  type: varchar(50)
+                  type: text
   - changeSet:
-      id: 15
+      id: 16
       author: cottonpads
       preConditions:
         - onFail: MARK_RAN
@@ -62,7 +62,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: name
-                  type: varchar(50)
+                  type: text
                   remarks: Имя пользователя
               - column:
                   name: number_of_phone
@@ -77,7 +77,7 @@ databaseChangeLog:
                   name: list_of_requests
                   type: text
   - changeSet:
-      id: 10
+      id: 11
       author: cottonpads
       preConditions:
         - onFail: MARK_RAN
@@ -106,8 +106,7 @@ databaseChangeLog:
                   type: varchar(50)
               - column:
                   name: last_viewed_product
-                  type: varchar(50)
-
+                  type: text
 
 
 

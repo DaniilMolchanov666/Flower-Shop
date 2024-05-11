@@ -14,11 +14,9 @@ import lombok.*;
 @Builder
 public class ProductUpdateDTO {
     @NotEmpty(message = "Категория товара не может быть пустой!")
-    @Size(min = 2, max = 50, message = "Название категории должно содержать от 2 до 50 символов!")
     private String name;
 
     @NotEmpty(message = "Имя не может быть пустым!")
-    @Size(min = 2, max = 50, message = "Название товара должно содержать от 2 до 50 символов!")
     private String category;
 
     private String description;

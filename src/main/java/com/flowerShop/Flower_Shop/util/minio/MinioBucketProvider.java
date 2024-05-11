@@ -65,7 +65,7 @@ public class MinioBucketProvider {
     }
 
     public void updateFileFromBucket(String oldName, String newName) throws IOException {
-        if (!Objects.equals(oldName, newName)) {
+        if (!Objects.equals(oldName, newName) && !newName.equals("без фото.jpg")) {
             addFileInBucket(Files.readAllBytes(Path.of(PATH_FOR_FLOWERS + oldName)), newName);
             deleteFileFromBucket(oldName);
         }

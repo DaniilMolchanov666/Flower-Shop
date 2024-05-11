@@ -29,14 +29,12 @@ public class Product implements Serializable {
 
     @Column(name = "category_of_product")
     @NotEmpty(message = "Категория товара не может быть пустой!")
-    @Size(min = 2, max = 50, message = "Название категории должно содержать от 2 до 50 символов!")
     @CreatedDate
     @CreatedBy
     private String category;
 
     @Column
     @NotEmpty(message = "Имя не может быть пустым!")
-    @Size(min = 2, max = 50, message = "Название товара должно содержать от 2 до 50 символов!")
     private String name;
 
     @Column

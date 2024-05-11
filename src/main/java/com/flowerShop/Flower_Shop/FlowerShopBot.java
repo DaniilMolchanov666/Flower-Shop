@@ -169,7 +169,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
             default:
                 StringBuilder message = new StringBuilder();
                 if (!currentButton.contains("DELETE_BUTTON")) {
-                    Optional<Product> currentProduct = productsService.findProduct(currentButton);
+                    Optional<Product> currentProduct = productsService.findById(Integer.parseInt(currentButton));
                     if (currentProduct.isPresent()) {
                         this.executeAsync(PhotoSender.sendMessage(update, currentProduct.get(),
                                 new DeleteMenuMarkup(currentProduct).createMarkup()));
@@ -179,7 +179,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                     }
                 } else {
                     String pressedProductName = StringUtils.removeStart(currentButton, "DELETE_BUTTON");
-                    Optional<Product> currentProduct = productsService.findProduct(pressedProductName);
+                    Optional<Product> currentProduct = productsService.findById(Integer.parseInt(pressedProductName));
 
                     List<Product> listOfProductsExcludeDeleted = new LinkedList<>(Arrays.stream(shopUser.getListOfRequests()
                                     .split("\n"))

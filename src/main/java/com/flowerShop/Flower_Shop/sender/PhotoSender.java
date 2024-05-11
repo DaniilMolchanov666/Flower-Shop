@@ -25,8 +25,5 @@ public class PhotoSender {
         sendMessage.setParseMode(ParseMode.MARKDOWN);
         sendMessage.setPhoto(new InputFile(new File(PATH_FLOWERS + product.getNameOfPhoto())));
         return sendMessage;
-
-
-
     }
 }

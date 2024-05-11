@@ -50,7 +50,7 @@ public class FileManager {
     public static void renameFile(String oldName, String newName) {
         if (new File(PATH_FOR_FLOWERS + oldName).exists()) {
             try {
-                if (!Objects.equals(oldName, newName)) {
+                if (!Objects.equals(oldName, newName) && !oldName.equals("без фото.jpg")) {
                     createFileAndSaveInDirectory(Files.readAllBytes(Paths.get(PATH_FOR_FLOWERS + oldName)), newName);
                     deleteFile(oldName);
                 }
