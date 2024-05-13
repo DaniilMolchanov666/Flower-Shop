@@ -44,7 +44,9 @@ public class FlowerShopBot extends TelegramLongPollingBot {
 
     private static final long id_admin1 = 1402556700L;
 
-    private static final long id_admin2 = 6831132148L;
+    private static final long id_admin2 = 176367978L;
+
+    private static final long id_admin3 = 6831132148L;
 
     public FlowerShopBot(@Value("${telegram.bot.token}") String botToken,
                          @Value("{telegram.bot.name") String botUserName) {
@@ -397,8 +399,9 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 user.getPostcardText() == null ? "Без текста" : user.getPostcardText(),
                 getRequestsText(user));
 
-        this.execute(TextMessageSender.sendInfo(id_admin1, contentForRequest));
-        this.execute(TextMessageSender.sendInfo(id_admin2, contentForRequest));
+        this.executeAsync(TextMessageSender.sendInfo(id_admin3, contentForRequest));
+        this.executeAsync(TextMessageSender.sendInfo(id_admin1, contentForRequest));
+        this.executeAsync(TextMessageSender.sendInfo(id_admin2, contentForRequest));
 
         user.setListOfRequests("");
 
