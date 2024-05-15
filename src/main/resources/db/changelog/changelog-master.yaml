@@ -1,5 +1,4 @@
 databaseChangeLog:
-
   - changeSet:
       id: 14
       author: cottonpads

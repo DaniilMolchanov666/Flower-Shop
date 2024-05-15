@@ -31,4 +31,3 @@ docker-compose up -d
 ## Project demonstration:
 Telegram-bot:
 
-![photo_2024-05-06_13-36-50](https://github.com/DaniilMolchanov666/Flower-Shop/assets/115214357/5a87e5a9-1d26-4bc0-aade-1f16858594ab)

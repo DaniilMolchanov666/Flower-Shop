@@ -1,4 +1,14 @@
+#logging:
+#  file:
+#    name: classpath:/application.log
+#  pattern:
+#    file: %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%
 spring:
+  main:
+    banner-mode: off
+  output:
+    ansi:
+      enabled: ALWAYS
   thymeleaf:
     prefix: classpath:/templates/
     suffix: .html
@@ -9,7 +19,7 @@ spring:
       max-file-size: 50MB
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://flowers_db:5432/cottonpads
+    url: jdbc:postgresql://localhost:5432/cottonpads
     username: daniilmolchanov
     password: microcuts1928
   jpa:
@@ -24,15 +34,15 @@ spring:
     change-log: classpath:db/changelog/changelog-master.yaml
 telegram:
   bot:
-    name: Procvetanie_Shop_Bot
-    token: 6996412649:AAEjERQih6LGvG4R17oAqEvEKiZbtgMPXqA
+    name: Prozvetanie_Flower_Shop_bot
+    token: 7091988555:AAFcBvGAlF8A8piWjlFaL_OGXV0wLpxD4yk
 port:
   9000
-minio:
-  url: minio
-  accessKey: minioadmin
-  secretKey: minioadmin
-  bucket-name: flowers
-  secure: false
+#minio:
+#  url: minio
+#  accessKey: minioadmin
+#  secretKey: minioadmin
+#  bucket-name: flowers
+#  secure: false
 
 
