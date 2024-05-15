@@ -1,5 +1,6 @@
 package com.flowerShop.Flower_Shop.dto.productDTO;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -28,6 +29,10 @@ public class ProductUpdateDTO {
     @NotNull(message = "Укажите цену!")
     @Pattern(regexp = "^[0-9]+$", message = "Закупочная цена должна быть целым положительным числом!")
     private String purchasePrice;
+
+    @Column(name = "show_for_bot")
+    @DefaultValue(value = "true")
+    private boolean showForBot;
 
     @DefaultValue(value = "без фото.jpg")
     private String nameOfPhoto;

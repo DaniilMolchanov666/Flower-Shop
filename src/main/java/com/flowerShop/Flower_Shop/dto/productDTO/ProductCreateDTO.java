@@ -32,6 +32,10 @@ public class ProductCreateDTO {
     @DefaultValue(value = "0")
     private String purchasePrice;
 
+    @Column(name = "show_for_bot")
+    @DefaultValue(value = "true")
+    private boolean showForBot;
+
     @DefaultValue(value = "без фото.jpg")
     private String nameOfPhoto;
 }

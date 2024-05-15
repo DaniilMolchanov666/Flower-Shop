@@ -51,6 +51,10 @@ public class Product implements Serializable {
     @DefaultValue(value = "0")
     private String purchasePrice;
 
+    @Column(name = "show_for_bot")
+    @DefaultValue(value = "true")
+    private boolean showForBot;
+
     @Column(name = "name_of_photo")
     @DefaultValue(value = "без фото.jpg")
     private String nameOfPhoto;

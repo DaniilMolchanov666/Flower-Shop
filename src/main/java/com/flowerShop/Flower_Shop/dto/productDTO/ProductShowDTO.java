@@ -13,5 +13,6 @@ public class ProductShowDTO {
     private String description;
     private String price;
     private String purchasePrice;
+    private Boolean showForBot;
     private String nameOfPhoto;
 }

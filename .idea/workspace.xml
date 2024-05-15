@@ -13,19 +13,22 @@
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/FlowerShopBot.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/FlowerShopBot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/minio/MinioBucketProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/minio/MinioBucketProvider.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/db/changelog/changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db/changelog/changelog-master.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/config/MinioConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/minio/MinioBucketProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/minio/MinioBucketProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classpath:/application.log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductCreateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductShowDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductShowDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductUpdateDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/model/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/changelog-master.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/show.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,18 +63,6 @@
                 <item name="Flower_Shop" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Flower_Shop" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Flower_Shop" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -162,7 +153,7 @@
     "Gradle.Flower_Shop [jar].executor": "Run",
     "Gradle.Flower_Shop [wrapper].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "test__version",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/daniilmolchanov/Рабочий стол/Flower_Shop",
     "project.structure.last.edited": "SDKs",
@@ -192,19 +183,28 @@
       <recent name="com.flowerShop.Flower_Shop" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.FlowerShopApplication">
-    <configuration name="FlowerShopApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.flowerShop.Flower_Shop.FlowerShopApplication" />
-      <module name="Flower_Shop.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.flowerShop.Flower_Shop.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment (2)">
+    <configuration name="Flower_Shop [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
     </configuration>
     <configuration name="Flower_Shop [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -279,9 +279,9 @@
       <list>
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment (2)" />
         <item itemvalue="Gradle.Flower_Shop [build]" />
+        <item itemvalue="Gradle.Flower_Shop [buildDependents]" />
         <item itemvalue="Docker.docker-compose.yml.flower_shop: Compose Deployment" />
         <item itemvalue="Docker.Dockerfile" />
-        <item itemvalue="Application.FlowerShopApplication" />
       </list>
     </recent_temporary>
   </component>

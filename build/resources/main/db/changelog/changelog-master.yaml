@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
-      id: 14
-      author: cottonpads
+      id: 1
+      author: daniilmolchanov
       preConditions:
         - onFail: MARK_RAN
         - not:
@@ -40,8 +40,8 @@ databaseChangeLog:
                   name: name_of_photo
                   type: text
   - changeSet:
-      id: 16
-      author: cottonpads
+      id: 2
+      author: daniilmolchanov
       preConditions:
         - onFail: MARK_RAN
         - not:
@@ -76,8 +76,8 @@ databaseChangeLog:
                   name: list_of_requests
                   type: text
   - changeSet:
-      id: 11
-      author: cottonpads
+      id: 3
+      author: daniilmolchanov
       preConditions:
         - onFail: MARK_RAN
         - not:
@@ -106,6 +106,17 @@ databaseChangeLog:
               - column:
                   name: last_viewed_product
                   type: text
+  - changeSet:
+        id: 4
+        author: cottonpads
+        changes:
+          - addColumn:
+              tableName: flower_shop_products
+              columns:
+                name: show_for_bot
+                type: bool
+                remarks: Показывать ли товар в боте
+
 
 
 

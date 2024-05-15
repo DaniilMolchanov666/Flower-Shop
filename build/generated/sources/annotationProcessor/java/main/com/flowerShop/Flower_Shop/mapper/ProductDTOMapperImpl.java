@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-05-15T10:19:37+0300",
+    date = "2024-05-15T16:59:05+0300",
     comments = "version: 1.5.5.Final, compiler: IncrementalProcessingEnvironment from gradle-language-java-8.2.jar, environment: Java 17.0.9 (Private Build)"
 )
 @Component
@@ -28,6 +28,7 @@ public class ProductDTOMapperImpl extends ProductDTOMapper {
         productShowDTO.description( product.getDescription() );
         productShowDTO.price( product.getPrice() );
         productShowDTO.purchasePrice( product.getPurchasePrice() );
+        productShowDTO.showForBot( product.isShowForBot() );
         productShowDTO.nameOfPhoto( product.getNameOfPhoto() );
 
         return productShowDTO.build();
@@ -46,6 +47,7 @@ public class ProductDTOMapperImpl extends ProductDTOMapper {
         product.description( productCreateDTO.getDescription() );
         product.price( productCreateDTO.getPrice() );
         product.purchasePrice( productCreateDTO.getPurchasePrice() );
+        product.showForBot( productCreateDTO.isShowForBot() );
         product.nameOfPhoto( productCreateDTO.getNameOfPhoto() );
 
         return product.build();
@@ -72,6 +74,7 @@ public class ProductDTOMapperImpl extends ProductDTOMapper {
         if ( productUpdateDTO.getPurchasePrice() != null ) {
             product.setPurchasePrice( productUpdateDTO.getPurchasePrice() );
         }
+        product.setShowForBot( productUpdateDTO.isShowForBot() );
         if ( productUpdateDTO.getNameOfPhoto() != null ) {
             product.setNameOfPhoto( productUpdateDTO.getNameOfPhoto() );
         }
