@@ -30,6 +30,7 @@ docker-compose up -d
 
 ## Project demonstration:
 Telegram-bot:
+
 ![bot_info.png](images/bot_info.png)
 ![bot_menu.png](images/bot_menu.png)
 ![bot_request.png](images/bot_request.png)
