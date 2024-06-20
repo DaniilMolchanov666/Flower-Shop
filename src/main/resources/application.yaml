@@ -1,6 +1,6 @@
 logging:
   file:
-    name: application.log
+    name: classpath:application.log
 spring:
   main:
     banner-mode: off
@@ -28,9 +28,15 @@ spring:
         temp:
           use_jdbc_metadata_defaults: false
     open-in-view: false
+    http:
+      multipart:
+        enable: false
+  security:
+    user:
+      username: procvetanie_shop
+      password: cottonpads1928
   liquibase:
     change-log: classpath:db/changelog/changelog-master.yaml
-
 telegram:
   bot:
     name: Prozvetanie_Flower_Shop_bot

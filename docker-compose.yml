@@ -10,7 +10,7 @@ services:
     depends_on:
       - flowers_db
   minio:
-    image: minio/minio:latest
+    image: mirror.gcr.io/minio/minio:latest
     command: server --console-address ":9001" /data/
     ports:
       - "9000:9000"
@@ -20,7 +20,7 @@ services:
       MINIO_ROOT_PASSWORD: minioadmin
   flowers_db:
     restart: always
-    image: postgres:alpine3.19
+    image: mirror.gcr.io/postgres:alpine3.19
     environment:
       - POSTGRES_DB=cottonpads
       - POSTGRES_USER=daniilmolchanov

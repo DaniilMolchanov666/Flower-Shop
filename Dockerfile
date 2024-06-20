@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM mirror.gcr.io/openjdk:17
 WORKDIR . .
 ADD build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar flowershop.jar
 ARG JAR_FILE
