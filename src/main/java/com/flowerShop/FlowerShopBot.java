@@ -70,7 +70,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 ShopUser shopUser = ShopUser.builder().chatId(chatId).build();
                 userService.save(shopUser);
             }
-            checkTextMessagesFromUser(update);
+            checkTextMessagesFromUser(update) ;
         } else if (update.hasCallbackQuery()) {
 //            setInfoAboutUserForConnect(update);
             buttonsCheck(update);
