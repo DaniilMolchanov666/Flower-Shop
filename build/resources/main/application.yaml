@@ -39,8 +39,8 @@ spring:
     change-log: classpath:db/changelog/changelog-master.yaml
 telegram:
   bot:
-    name: Prozvetanie_Flower_Shop_bot
-    token: 7091988555:AAFcBvGAlF8A8piWjlFaL_OGXV0wLpxD4yk
+    name: Procvetanie_Shop_Bot
+    token: 6996412649:AAEjERQih6LGvG4R17oAqEvEKiZbtgMPXqA
 port:
   9000
 minio:

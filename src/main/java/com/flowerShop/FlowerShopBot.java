@@ -371,6 +371,21 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 new CheckMenuMarkup().createMarkup()));
     }
 
+//    //TODO сделать сохранение информации о пользователе на старте работы с ботом
+//    public void setInfoAboutUserForConnect(ShopUser shopUser, Update update) {
+//        long chatId = update.getCallbackQuery().getFrom().getId();
+//
+//        User userFromTg = update.getCallbackQuery().getFrom();
+//
+//        String fullName = userFromTg.getLastName() != null ? userFromTg.getFirstName() + " " + userFromTg.getLastName()
+//                : userFromTg.getFirstName();
+//        String userName = userFromTg.getUserName() != null ? "@" + userFromTg.getUserName() : "Нет информации";
+//
+//        userService.save();
+//
+//
+//    }
+
     public void sendRequestForAdmin(ShopUser user, Update update) throws TelegramApiException {
         String content = """
                 Готово! Информация о Вашем заказе передана флористам студии. \

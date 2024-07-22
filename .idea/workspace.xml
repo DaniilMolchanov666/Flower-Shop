@@ -4,134 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="08f8633f-6c83-4549-93db-cf9dcc740cf4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/config/RollBarConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/flowerShop/FlowerShopApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/FlowerShopApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/FlowerShopBot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/config/BotInitializer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/config/FlowerShopBotConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/config/MinioConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/config/MvcConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/controller/web/GetController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/controller/web/PostController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/dto/productDTO/ProductCreateDTO$ProductCreateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/dto/productDTO/ProductCreateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/dto/productDTO/ProductShowDTO$ProductShowDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/dto/productDTO/ProductShowDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/dto/productDTO/ProductUpdateDTO$ProductUpdateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/dto/productDTO/ProductUpdateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/model/Product$ProductBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/model/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/model/ShopUser$ShopUserBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/model/ShopUser.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/model/UserState$UserStateBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/model/UserState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/repository/ProductsRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/repository/UserStateRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/repository/UsersRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/DeleteMessageUpdate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/MultiContentMessageSender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/PhotoSender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/sender/TextMessageSender.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/bot/user_service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/bot/user_service/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/web/ProductsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/service/web/ProductsServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/UpdateState.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/AllRequestsMenuMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/BackMenuButtonMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/BackStartButtonMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/CategoryMenuMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/CheckMenuMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/DeleteMenuMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/KeyboardMarkupCreator.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/MarkupBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/PhotoMenuMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/bot/markups/StartMenuMarkup.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/minio/MinioBucketProvider.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/flowerShop/Flower_Shop/util/web/FileManager.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/test/com/flowerShop/Flower_Shop/FlowerShopApplicationTests.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/Flower_Shop/mapper/ProductDTOMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/build/generated/sources/annotationProcessor/java/main/com/flowerShop/mapper/ProductDTOMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/Flower_Shop-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/reports/tests/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/tests/test/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resolvedMainClassName" beforeDir="false" afterPath="$PROJECT_DIR$/build/resolvedMainClassName" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/db/changelog/changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db/changelog/changelog-master.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/templates/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/templates/show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/test/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/test/script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/output.bin.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/test-results/test/binary/results.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/bootJar/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileTestJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flowers/без фото.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/flowers/без фото.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/build/resolvedMainClassName" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/build/resolvedMainClassName" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/build/tmp/bootJar/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/build/tmp/bootJar/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/FlowerShopApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/FlowerShopApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/FlowerShopBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/FlowerShopBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/config/BotInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/config/BotInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/config/FlowerShopBotConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/config/FlowerShopBotConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/config/MinioConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/config/MinioConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/config/MvcConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/controller/web/GetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/controller/web/GetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/controller/web/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/controller/web/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/dto/productDTO/ProductCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductShowDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/dto/productDTO/ProductShowDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/dto/productDTO/ProductUpdateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/dto/productDTO/ProductUpdateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/mapper/ProductDTOMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/mapper/ProductDTOMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/model/ShopUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/model/ShopUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/model/UserState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/model/UserState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/ProductsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/repository/ProductsRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/UserStateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/repository/UserStateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/repository/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/repository/UsersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/DeleteMessageUpdate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/sender/DeleteMessageUpdate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/MultiContentMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/sender/MultiContentMessageSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/PhotoSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/sender/PhotoSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/sender/TextMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/sender/TextMessageSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/service/bot/user_service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/service/bot/user_service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/bot/user_state_service/UserStateService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/service/bot/user_state_service/UserStateService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/web/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/service/web/ProductsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/service/web/ProductsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/service/web/ProductsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/UpdateState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/UpdateState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/AllRequestsMenuMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/AllRequestsMenuMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/BackMenuButtonMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/BackMenuButtonMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/BackStartButtonMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/BackStartButtonMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/CategoryMenuMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/CategoryMenuMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/CheckMenuMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/CheckMenuMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/DeleteMenuMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/DeleteMenuMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/KeyboardMarkupCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/KeyboardMarkupCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/MarkupBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/MarkupBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/PhotoMenuMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/PhotoMenuMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/bot/markups/StartMenuMarkup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/bot/markups/StartMenuMarkup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/minio/MinioBucketProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/minio/MinioBucketProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/flowerShop/Flower_Shop/util/web/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/flowerShop/util/web/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/changelog-master.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/changelog-master.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/show.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/flowerShop/Flower_Shop/FlowerShopApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/script.sql" afterDir="false" />
-    </list>
+    <list default="true" id="08f8633f-6c83-4549-93db-cf9dcc740cf4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -313,6 +186,24 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.FlowerShopApplicationTests">
+    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
+      <deployment type="docker-image">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <method v="2" />
+    </configuration>
     <configuration name="FlowerShopApplicationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -370,24 +261,6 @@
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="docker-image" temporary="true">
-      <deployment type="docker-image">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile">
-        <settings />
-      </deployment>
-      <method v="2" />
-    </configuration>
     <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker3">
       <deployment type="docker-compose.yml">
         <settings>
@@ -412,10 +285,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.FlowerShopApplicationTests" />
-        <item itemvalue="Docker.docker-compose.yml.minio: Compose Deployment" />
         <item itemvalue="Gradle.FlowerShopApplicationTests.testLoginPageWork" />
-        <item itemvalue="Docker.Docker Image" />
-        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
       </list>
     </recent_temporary>
   </component>
