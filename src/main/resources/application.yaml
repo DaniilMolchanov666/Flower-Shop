@@ -40,7 +40,7 @@ spring:
 telegram:
   bot:
     name: Procvetanie_Shop_Bot
-    token: 6996412649:AAEjERQih6LGvG4R17oAqEvEKiZbtgMPXqA
+    token: 6996412649:AAHwHRn1En4mqsAcevvBMMYQ_pQxwgcFssI
 port:
   9000
 minio:
