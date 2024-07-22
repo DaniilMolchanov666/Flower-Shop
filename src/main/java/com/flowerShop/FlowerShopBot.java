@@ -72,6 +72,7 @@ public class FlowerShopBot extends TelegramLongPollingBot {
             }
             checkTextMessagesFromUser(update);
         } else if (update.hasCallbackQuery()) {
+//            setInfoAboutUserForConnect(update);
             buttonsCheck(update);
         }
     }
@@ -371,20 +372,19 @@ public class FlowerShopBot extends TelegramLongPollingBot {
                 new CheckMenuMarkup().createMarkup()));
     }
 
-//    //TODO сделать сохранение информации о пользователе на старте работы с ботом
-//    public void setInfoAboutUserForConnect(ShopUser shopUser, Update update) {
-//        long chatId = update.getCallbackQuery().getFrom().getId();
-//
-//        User userFromTg = update.getCallbackQuery().getFrom();
-//
-//        String fullName = userFromTg.getLastName() != null ? userFromTg.getFirstName() + " " + userFromTg.getLastName()
-//                : userFromTg.getFirstName();
-//        String userName = userFromTg.getUserName() != null ? "@" + userFromTg.getUserName() : "Нет информации";
-//
-//        userService.save();
-//
-//
-//    }
+    //TODO сделать сохранение информации о пользователе на старте работы с ботом
+    public void setInfoAboutUserForConnect(Update update) {
+        long chatId = update.getCallbackQuery().getFrom().getId();
+
+        User userFromTg = update.getCallbackQuery().getFrom();
+
+        String userName = userFromTg.getUserName() != null ? "@" + userFromTg.getUserName() : "Нет информации";
+
+        ShopUser shopUser = ShopUser.builder().chatId(chatId).name(userName).build();
+
+        userService.save(shopUser);
+
+    }
 
     public void sendRequestForAdmin(ShopUser user, Update update) throws TelegramApiException {
         String content = """
